@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Interview/Interview.iml" filepath="$PROJECT_DIR$/Interview/Interview.iml" />
       <module fileurl="file://$PROJECT_DIR$/MDemo.iml" filepath="$PROJECT_DIR$/MDemo.iml" />
       <module fileurl="file://D:\devspace\devpractice\MDemo\Interview\app.iml" filepath="D:\devspace\devpractice\MDemo\Interview\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/designpattern/designpattern.iml" filepath="$PROJECT_DIR$/designpattern/designpattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/javalearn/javalearn.iml" filepath="$PROJECT_DIR$/javalearn/javalearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
     </modules>

@@ -1,1 +1,1 @@
-include ':Interview', ':mvp', ':javalearn', ':DataStructureAndAlgorithms'
+include ':Interview', ':mvp', ':javalearn', ':DataStructureAndAlgorithms', ':designpattern'
