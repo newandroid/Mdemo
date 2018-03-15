@@ -24,40 +24,46 @@ public class ImageLoader {
     public ImageLoader() {
 
     }
-    public ImageLoader(Activity context){
+
+    public ImageLoader(Activity context) {
         this.context = context;
     }
 
-    public void displayImage(final String url, final ImageView imageView){
+    public void setImageCache(ImageCache imageCache) {
+        this.imageCache = imageCache;
+    }
+
+    public void displayImage(final String url, final ImageView imageView) {
+        if (imageCache==null) imageCache = new DoubbleCache();
         Bitmap oldBitmap = imageCache.get(url);
-        if (oldBitmap!=null){
+        if (oldBitmap != null){
             imageView.setImageBitmap(oldBitmap);
             return;
         }
         imageView.setTag(url);
         executorService.submit(() -> {
             Bitmap bitmap = downloadImage(url);
-            if (bitmap==null)return;
-            if (imageView.getTag().equals(url)){
-                showImageInMainThread(imageView,bitmap);
+            if (bitmap == null) return;
+            if (imageView.getTag().equals(url)) {
+                showImageInMainThread(imageView, bitmap);
             }
-            imageCache.put(url,bitmap);
+            imageCache.put(url, bitmap);
         });
     }
 
-    public Bitmap downloadImage(String urlStr){
+    public Bitmap downloadImage(String urlStr) {
         Bitmap bitmap = null;
         try {
             URL url = new URL(urlStr);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             bitmap = BitmapFactory.decodeStream(httpURLConnection.getInputStream());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return bitmap;
     }
 
-    private void showImageInMainThread(final ImageView imageView,Bitmap bitmap){
-       if (context!=null)context.runOnUiThread(() -> imageView.setImageBitmap(bitmap));
+    private void showImageInMainThread(final ImageView imageView, Bitmap bitmap) {
+        if (context != null) context.runOnUiThread(() -> imageView.setImageBitmap(bitmap));
     }
 }
