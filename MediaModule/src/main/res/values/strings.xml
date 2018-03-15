@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TestDev</string>
+    <string name="need_audio_permission">need_audio_permission</string>
+    <string name="setting">setting</string>
+    <string name="cancel">cancel</string>
+    <string name="music_play">music</string>
+    <string name="play_list">list</string>
+</resources>

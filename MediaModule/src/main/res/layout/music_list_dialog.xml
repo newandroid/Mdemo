@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:textStyle="bold"
+            android:layout_height="65dp"
+            android:textColor="#524e4e"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="@string/play_list"
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:visibility="visible"/>
+        <View android:id="@+id/title_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#cbcbcb"
+            android:visibility="visible"/>
+
+        <ListView
+            android:background="@android:color/white"
+            android:dividerHeight="1px"
+            android:id="@+id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="223dp"
+            android:divider="#ededeb"
+            />
+        <ImageView
+            android:id="@+id/gap"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc" />
+        <Button
+            android:text="@string/cancel"
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:textColor="#317ff5"
+            android:textSize="16.0sp"
+            android:background="@android:color/darker_gray"/>
+    </LinearLayout>
+
+</LinearLayout>

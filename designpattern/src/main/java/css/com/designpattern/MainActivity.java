@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import css.com.designpattern.chapter1.Imagloader;
+import css.com.designpattern.chapter1.ImageLoader;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton imageView;
@@ -20,6 +20,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void myclick(View view) {
-        new Imagloader().displayImage(imageUrl,imageView,this);
+        new ImageLoader(this).displayImage(imageUrl,imageView);
     }
 }

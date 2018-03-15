@@ -3,7 +3,6 @@ package css.com.designpattern.chapter1;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
 import java.net.HttpURLConnection;
@@ -15,28 +14,32 @@ import java.util.concurrent.Executors;
  * Created by css on 2018-
  */
 
-public class Imagloader {
-    LruCache<String, Bitmap> imageCache;
+public class ImageLoader {
+    ImageCache imageCache;
     ExecutorService executorService
             = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-    public Imagloader() {
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        imageCache = new LruCache<String, Bitmap>(maxMemory) {
-            @Override
-            protected int sizeOf(String key, Bitmap bitmap) {
-                return bitmap.getRowBytes() * bitmap.getHeight() / 1024;
-            }
-        };
+    Activity context;
+
+    public ImageLoader() {
+
+    }
+    public ImageLoader(Activity context){
+        this.context = context;
     }
 
-    public void displayImage(final String url, final ImageView imageView, Activity context){
+    public void displayImage(final String url, final ImageView imageView){
+        Bitmap oldBitmap = imageCache.get(url);
+        if (oldBitmap!=null){
+            imageView.setImageBitmap(oldBitmap);
+            return;
+        }
         imageView.setTag(url);
         executorService.submit(() -> {
             Bitmap bitmap = downloadImage(url);
             if (bitmap==null)return;
             if (imageView.getTag().equals(url)){
-                context.runOnUiThread(() -> imageView.setImageBitmap(bitmap));
+                showImageInMainThread(imageView,bitmap);
             }
             imageCache.put(url,bitmap);
         });
@@ -52,5 +55,9 @@ public class Imagloader {
             e.printStackTrace();
         }
         return bitmap;
+    }
+
+    private void showImageInMainThread(final ImageView imageView,Bitmap bitmap){
+       if (context!=null)context.runOnUiThread(() -> imageView.setImageBitmap(bitmap));
     }
 }
