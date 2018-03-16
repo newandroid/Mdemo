@@ -15,6 +15,7 @@ public class DoubbleCache implements ImageCache {
         Bitmap bitmap = memoryCache.get(url);
         if (bitmap == null) {
             bitmap = diskCache.get(url);
+            if(bitmap!=null)
             memoryCache.put(url, bitmap);
         }
         return bitmap;
