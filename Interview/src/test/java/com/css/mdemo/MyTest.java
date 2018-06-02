@@ -14,4 +14,9 @@ public class MyTest {
         MainClass mainClass = new MainClass();
         mainClass.sort();
     }
+
+
+    public void treeTest(){
+
+    }
 }

@@ -13,5 +13,6 @@ class Singleton {
     }
 
     private Singleton() {
+
     }
 }
