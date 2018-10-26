@@ -1,4 +1,5 @@
-package com.css.test.daggertest;
+package com.css.test.daggertest.document;
+
 
 import javax.inject.Inject;
 

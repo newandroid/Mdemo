@@ -1,8 +1,10 @@
 package com.css.test.daggertest;
 
-import org.junit.Test;
+import com.css.test.daggertest.document.ComputerMoudel;
+import com.css.test.daggertest.document.ComputerShop;
+import com.css.test.daggertest.document.DaggerComputerShop;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +14,8 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+        DaggerComputerShop.builder().computerMoudel(new ComputerMoudel()).build();
+        ComputerShop computerShop = DaggerComputerShop.create();
+        computerShop.sell().playGame();
     }
 }

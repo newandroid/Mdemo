@@ -1,15 +1,18 @@
-package com.css.test.daggertest;
+package com.css.test.daggertest.document;
+
 
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class ComputerMoudel {
-    @Provides Screen provideScrren(){
+    @Provides
+    Screen provideScrren(){
         return new Screen();
     }
 
-    @Provides Headset provideHeadset(){
+    @Provides
+    Headset provideHeadset(){
         return new Headset();
     }
 }
