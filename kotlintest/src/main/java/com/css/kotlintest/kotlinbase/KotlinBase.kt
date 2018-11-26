@@ -1,5 +1,8 @@
 package com.css.kotlintest.kotlinbase
 
+import android.widget.TextView
+import java.util.*
+
 class KotlinBase {
     fun main() {
         println("hello world")
@@ -16,5 +19,9 @@ class KotlinBase {
         if (x in 0..y){
             println("fits in range")
         }
+    }
+
+    fun arrayDemo(){
+        val list = ArrayList<TextView>()
     }
 }
