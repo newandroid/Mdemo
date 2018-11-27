@@ -1,0 +1,50 @@
+ext {
+    android = [
+            compileSdkVersion: 27,
+            minSdkVersion    : 15,
+            targetSdkVersion : 27,
+            versionCode      : 146,
+            versionName      : "2.3.1"
+    ]
+    javalibversion = [
+            sourceCompatibility   : "1.8",
+            sourceCompatibilityLow: "1.7",
+            targetCompatibility   : "1.8",
+            targetCompatibilityLow: "1.7",
+    ]
+
+    version = [
+            sdkVersion: "27.1.1",
+            espresso  : "3.0.2"
+    ]
+
+    dependencies = [
+            //test
+            "junit"                   : "junit:junit:4.12",
+            "test-runner"             : "com.android.support.test:runner:1.0.2",
+            "test-rules"              : "com.android.support.test:rules:1.0.2",
+            "espresso-core"           : "com.android.support.test.espresso:espresso-core:${version["espresso"]}",
+            "espresso-contrib"        : "com.android.support.test.espresso:espresso-contrib:${version["espresso"]}",
+            "espresso-intents"        : "com.android.support.test.espresso:espresso-intents:${version["espresso"]}",
+            "espresso-idling-resource": "com.android.support.test.espresso:espresso-idling-resource:${version["espresso"]}",
+            "mockito-core"            : "org.mockito:mockito-core:1.10.19",
+            "dexmaker"                : "com.google.dexmaker:dexmaker:1.2",
+            "dexmaker-mockito"        : "com.google.dexmaker:dexmaker-mockito:1.2",
+
+            // Dependencies for local unit tests
+            "mockito-all"             : "org.mockito:mockito-all:1.10.19",
+            "hamcrest-all"            : "org.hamcrest:hamcrest-all:1.3",
+
+            "appcompat-v7"            : "com.android.support:appcompat-v7:${version["sdkVersion"]}",
+            "support-annotations"     : "com.android.support:support-annotations:${version["sdkVersion"]}",
+            "constraint-layout"       : "com.android.support.constraint:constraint-layout:1.0.2",
+            "cardview-v7"             : "com.android.support:cardview-v7:${version["sdkVersion"]}",
+            "design"                  : "com.android.support:design:${version["sdkVersion"]}",
+            "recyclerview-v7"         : "com.android.support:recyclerview-v7:${version["sdkVersion"]}",
+            "support-v4"              : "com.android.support:support-v4:${version["sdkVersion"]}",
+            "guava"                   : "com.google.guava:guava:22.0",
+            "circleimageview"         : "de.hdodenhof:circleimageview:2.0.0",
+            "easypermissions"         : "pub.devrel:easypermissions:0.1.9",
+
+    ]
+}
