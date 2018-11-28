@@ -15,8 +15,11 @@ public class MyTest {
         mainClass.sort();
     }
 
-
-    public void treeTest(){
-
+    @Test
+    public void test(){
+        int[] a = new int[]{3,4};
+        int[] b = new int[]{3,4};
+        int[] c = new int[]{3,4};
+        int[] d = new int[]{3,4};
     }
 }
