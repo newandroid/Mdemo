@@ -10,16 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- CustomLayoutActivity -->
-        <activity android:name=".activitys.ConstraintActivity">
+        <!-- activitys.ConstraintActivity -->
+        <activity android:name=".fragmentcannotshowbug.BugMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.LifeCycleActivity"></activity>
-        <activity android:name=".activitys.CustomLayoutActivity"></activity>
+        <activity android:name=".activitys.LifeCycleActivity" />
+        <activity android:name=".activitys.CustomLayoutActivity" />
+        <activity
+            android:name=".activitys.ConstraintActivity"
+            android:label="@string/title_activity_bug_main">
+
+        </activity>
     </application>
 
 </manifest>

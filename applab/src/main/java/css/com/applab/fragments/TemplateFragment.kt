@@ -46,6 +46,9 @@ class TemplateFragment : androidx.fragment.app.Fragment() {
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
+
+//        val begin = fragmentManager?.beginTransaction()
+//        begin?.add(R.id.root, next)
     }
 
     override fun onAttach(context: Context) {

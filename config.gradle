@@ -1,0 +1,50 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 15,
+            targetSdkVersion : 28,
+            versionCode      : 146,
+            versionName      : "2.3.1"
+    ]
+    javalibversion = [
+            sourceCompatibility   : "1.8",
+            sourceCompatibilityLow: "1.7",
+            targetCompatibility   : "1.8",
+            targetCompatibilityLow: "1.7",
+    ]
+
+    version = [
+            sdkVersion: "1.0.2",
+            espresso  : "3.1.1-alpha01"
+    ]
+
+    dependencies = [
+            //test
+            "junit"                   : "junit:junit:4.12",
+            "test-runner"             : "androidx.test:runner:1.1.1-alpha01",
+            "test-rules"              : "androidx.test:rules:1.1.1-alpha01",
+            "espresso-core"           : "androidx.test.espresso:espresso-core:${version["espresso"]}",
+            "espresso-contrib"        : "androidx.test.espresso:espresso-contrib:${version["espresso"]}",
+            "espresso-intents"        : "androidx.test.espresso:espresso-intents:${version["espresso"]}",
+            "espresso-idling-resource": "androidx.test.espresso:espresso-idling-resource:${version["espresso"]}",
+            "mockito-core"            : "org.mockito:mockito-core:1.10.19",
+            "dexmaker"                : "com.google.dexmaker:dexmaker:1.2",
+            "dexmaker-mockito"        : "com.google.dexmaker:dexmaker-mockito:1.2",
+
+            // Dependencies for local unit tests
+            "mockito-all"             : "org.mockito:mockito-all:1.10.19",
+            "hamcrest-all"            : "org.hamcrest:hamcrest-all:1.3",
+
+            "appcompat-v7"            : "androidx.appcompat:appcompat:${version["sdkVersion"]}",
+            "support-annotations"     : "androidx.annotation:annotation:1.0.0",
+            "constraint-layout"       : "androidx.constraintlayout:constraintlayout:2.0.0-alpha2",
+            "cardview-v7"             : "androidx.cardview:cardview:1.0.0",
+            "design"                  : "com.google.android.material:material:1.0.0",
+            "recyclerview-v7"         : "androidx.recyclerview:recyclerview:1.0.0",
+            "support-v4"              : "androidx.legacy:legacy-support-v4:1.0.0",
+            "guava"                   : "com.google.guava:guava:22.0",
+            "circleimageview"         : "de.hdodenhof:circleimageview:2.0.0",
+            "easypermissions"         : "pub.devrel:easypermissions:0.1.9",
+
+    ]
+}
