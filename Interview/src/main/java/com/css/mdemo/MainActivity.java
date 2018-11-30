@@ -2,14 +2,12 @@ package com.css.mdemo;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.css.mdemo.view.PieChart;
-
-import css.com.javalearn.MyClass;
 
 public class MainActivity extends AppCompatActivity {
 

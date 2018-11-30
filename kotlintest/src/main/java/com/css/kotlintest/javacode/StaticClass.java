@@ -1,6 +1,6 @@
 package com.css.kotlintest.javacode;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.css.kotlintest.kotlinbase.KotlinCallJava;
 

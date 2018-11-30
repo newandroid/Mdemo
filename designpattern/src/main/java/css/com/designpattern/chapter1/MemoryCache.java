@@ -1,7 +1,7 @@
 package css.com.designpattern.chapter1;
 
 import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 
 /**
  * Created by css on 2018-03-13.

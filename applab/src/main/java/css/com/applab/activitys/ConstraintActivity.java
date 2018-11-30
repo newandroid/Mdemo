@@ -1,7 +1,7 @@
 package css.com.applab.activitys;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import css.com.applab.R;
 
