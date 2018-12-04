@@ -1,8 +1,9 @@
 package com.css.test.daggertest;
 
-import com.css.test.daggertest.document.ComputerMoudel;
+import com.css.test.daggertest.document.ComputerModule;
 import com.css.test.daggertest.document.ComputerShop;
 import com.css.test.daggertest.document.DaggerComputerShop;
+import com.css.test.daggertest.document.googlesample.DaggerCoffeShop;
 
 import org.junit.Test;
 
@@ -14,8 +15,13 @@ import org.junit.Test;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        DaggerComputerShop.builder().computerMoudel(new ComputerMoudel()).build();
+        DaggerComputerShop.builder().computerModule(new ComputerModule()).build();
         ComputerShop computerShop = DaggerComputerShop.create();
         computerShop.sell().playGame();
+    }
+
+    @Test
+    public void testCoffee(){
+        DaggerCoffeShop.create().maker().showFieldsClassName();
     }
 }

@@ -5,6 +5,7 @@ import com.css.kotlintest.javacode.StaticClass
 
 abstract class KotlinCallJava {
     protected lateinit var staticClass: StaticClass
+
     private fun init() {
         staticClass = StaticClass.with(this)
         staticClass.doSomething()

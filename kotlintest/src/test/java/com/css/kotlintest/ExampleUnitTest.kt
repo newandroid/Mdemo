@@ -1,10 +1,10 @@
 package com.css.kotlintest
 
 import com.css.kotlintest.kotlinbase.KotlinBase
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
-import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -48,5 +48,9 @@ class ExampleUnitTest {
 
     @Test
     fun filetest(){
+        val stream = Files.newInputStream(Paths.get("C:\\Users\\WIN10\\Desktop\\temp\\temp\\myfiles.txt"))
+        stream.buffered().reader().use { reader ->
+            println(reader.readText())
+        }
     }
 }

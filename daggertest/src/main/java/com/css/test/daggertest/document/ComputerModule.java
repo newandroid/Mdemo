@@ -5,9 +5,9 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ComputerMoudel {
+public class ComputerModule {
     @Provides
-    Screen provideScrren(){
+    Screen provideScreen(){
         return new Screen();
     }
 

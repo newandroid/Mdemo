@@ -3,6 +3,7 @@ package com.css.kotlintest;
 import android.widget.TextView;
 
 import com.css.kotlintest.bean.ByteProtocolBean;
+import com.css.kotlintest.javacode.StaticClass;
 
 import org.junit.Test;
 
@@ -42,6 +43,11 @@ public class JavaUnitTest {
 
     public void createJavaCode(){
         ArrayList<TextView> list = new ArrayList<>();
+    }
+
+    @Test
+    public void testInherit(){
+
     }
 
 }
