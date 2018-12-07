@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- activitys.ConstraintActivity -->
-        <activity android:name=".fragmentcannotshowbug.BugMainActivity">
+        <!-- .leakcheck.LeakStartActivity -->
+        <activity android:name=".activitys.CustomDragGroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
+        <activity android:name=".leakcheck.LeakStartActivity" />
+        <activity android:name=".leakcheck.LeakActivity"/>
+        <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>
         <activity
             android:name=".activitys.ConstraintActivity"
             android:label="@string/title_activity_bug_main">
