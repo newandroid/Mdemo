@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- .leakcheck.LeakStartActivity -->
+        <!-- .activitys.LifeCycleActivity -->
         <activity android:name=".activitys.CustomDragGroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

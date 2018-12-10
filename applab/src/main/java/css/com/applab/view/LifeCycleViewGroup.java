@@ -33,20 +33,20 @@ import java.util.Collection;
 
 import androidx.annotation.NonNull;
 
-public class ViewGroupLifeCycle extends ViewGroup {
+public class LifeCycleViewGroup extends ViewGroup {
     private static final String TAG = "ViewGroupLiftCycle";
 
-    public ViewGroupLifeCycle(Context context) {
+    public LifeCycleViewGroup(Context context) {
         super(context);
         Log.d(TAG, "ViewGroupLiftCycle() called with: context = [" + context + "]");
     }
 
-    public ViewGroupLifeCycle(Context context, AttributeSet attrs) {
+    public LifeCycleViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         Log.d(TAG, "ViewGroupLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "]");
     }
 
-    public ViewGroupLifeCycle(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LifeCycleViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         Log.d(TAG, "ViewGroupLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "], defStyleAttr = [" + defStyleAttr + "]");
     }

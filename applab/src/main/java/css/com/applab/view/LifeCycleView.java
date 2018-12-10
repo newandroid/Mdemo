@@ -50,19 +50,19 @@ import android.view.inputmethod.InputConnection;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ViewLifeCycle extends View {
+public class LifeCycleView extends View {
     private static final String TAG = "ViewLiftCycle";
-    public ViewLifeCycle(Context context) {
+    public LifeCycleView(Context context) {
         super(context);
         Log.d(TAG, "ViewLiftCycle() called with: context = [" + context + "]");
     }
 
-    public ViewLifeCycle(Context context, @androidx.annotation.Nullable AttributeSet attrs) {
+    public LifeCycleView(Context context, @androidx.annotation.Nullable AttributeSet attrs) {
         super(context, attrs);
         Log.d(TAG, "ViewLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "]");
     }
 
-    public ViewLifeCycle(Context context, @androidx.annotation.Nullable AttributeSet attrs, int defStyleAttr) {
+    public LifeCycleView(Context context, @androidx.annotation.Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         Log.d(TAG, "ViewLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "], defStyleAttr = [" + defStyleAttr + "]");
     }

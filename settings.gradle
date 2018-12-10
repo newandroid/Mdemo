@@ -1,1 +1,1 @@
-include ':Interview', ':mvp', ':javalearn', ':DataStructureAndAlgorithms', ':designpattern', ':MediaModule', ':TestJava8', ':daggertest', ':kotlintest', ':thinkjava', ':applab'
+include ':Interview', ':mvp', ':javalearn', ':DataStructureAndAlgorithms', ':designpattern', ':MediaModule', ':TestJava8', ':daggertest', ':kotlintest', ':thinkjava', ':applab', ':uilib'

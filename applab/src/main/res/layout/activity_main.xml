@@ -2,17 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentcontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activitys.LifeCycleActivity">
 
-   <css.com.applab.view.ViewGroupLifeCycle
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
 
-      <css.com.applab.view.ViewLifeCycle
-          android:layout_width="100dp"
-          android:layout_height="500dp" />
-   </css.com.applab.view.ViewGroupLifeCycle>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
