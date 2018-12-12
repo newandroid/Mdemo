@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- .activitys.LifeCycleActivity -->
-        <activity android:name=".activitys.CustomDragGroupActivity">
+        <!-- .activitys.CustomDragGroupActivity -->
+        <activity android:name=".activitys.DrawCircleLineActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
+        <activity android:name=".activitys.CustomDragGroupActivity" />
         <activity android:name=".leakcheck.LeakStartActivity" />
         <activity android:name=".leakcheck.LeakActivity"/>
         <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>

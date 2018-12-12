@@ -20,4 +20,11 @@ public class MathApi {
             System.out.println(random.nextInt());
         }
     }
+
+    @Test
+    public void testTan(){
+        double ag = Math.atan2(-1, 1);
+        double dg = Math.toDegrees(ag);
+        System.out.println("ag:" + dg);
+    }
 }
