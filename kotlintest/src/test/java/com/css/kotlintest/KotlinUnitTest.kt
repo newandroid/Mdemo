@@ -99,8 +99,7 @@ class KotlinUnitTest {
         }
 
 //        lambdaFunction("unknow param") { println(it) }
-        lambdaFunction("unknow param",{
-            other->
+        lambdaFunction("unknow param", { other ->
             println(other)
             5
         })
@@ -108,6 +107,9 @@ class KotlinUnitTest {
         lambdaFunction("unknow param") { noParamFunction() }
         println("-----------")
         lambdaFunction("unknow param") { oneParamFunction(it) }
+        lambdaFunction("unknow param", ::oneParamFunction)
+        lambdaFunction("unknow param", this::oneParamFunction)
+//        lambdaFunction("unknow param", KotlinUnitTest::oneParamFunction)//error
         println("-----------")
         lambdaFunction("unknow param") { twoParamFunction(it, 10.toDouble()) }
         println("-----------")
@@ -117,24 +119,26 @@ class KotlinUnitTest {
         println("-----------")
     }
 
-    fun noParamFunction():Int{
+    fun noParamFunction(): Int {
         return 5
     }
 
 
-    fun oneParamFunction(data: Int):Int {
+    fun oneParamFunction(data: Int): Int {
         println("this is oneParamFunction data: $data")
         return data
     }
 
-    fun twoParamFunction(data: Int, mulData: Double):Int {
+    fun twoParamFunction(data: Int, mulData: Double): Int {
         println("this is twoParamFunction data: $data mulData:$mulData")
         return data
     }
-    fun diffParamFunction(str:String):Int{
+
+    fun diffParamFunction(str: String): Int {
         return 7
     }
-    fun diffReturnFunction():Double{
+
+    fun diffReturnFunction(): Double {
         String
         return 1.1
     }
