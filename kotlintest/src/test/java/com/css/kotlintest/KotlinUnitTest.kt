@@ -12,7 +12,7 @@ import java.nio.file.Paths
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class KotlinUnitTest {
+open class KotlinUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
@@ -142,6 +142,29 @@ class KotlinUnitTest {
         String
         return 1.1
     }
+
+    @Test
+    fun testMap(){
+//        hahha(22)
+//        hahha("33")
+    }
+
+    fun <T : KotlinUnitTest> hahha(t: T) {
+        println(t.javaClass.simpleName)
+    }
+
+
+    fun <K,V> eeee(map:Map<K,V>):Unit{
+
+    }
+
+    fun <K,V> hahah(map:Map<Any,Any>):Unit{
+        val toMutableMap = map.toMutableMap()
+        toMutableMap.put("qqq","sss")
+    }
+
+
+
 
 
 }

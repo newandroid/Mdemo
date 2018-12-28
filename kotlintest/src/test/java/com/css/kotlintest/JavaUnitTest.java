@@ -3,7 +3,6 @@ package com.css.kotlintest;
 import android.widget.TextView;
 
 import com.css.kotlintest.bean.ByteProtocolBean;
-import com.css.kotlintest.javacode.StaticClass;
 
 import org.junit.Test;
 
@@ -48,6 +47,10 @@ public class JavaUnitTest {
     @Test
     public void testInherit(){
 
+    }
+
+    public <T extends String> void hahha(T t){
+        System.out.println(t.getClass().getSimpleName());
     }
 
 }

@@ -2,6 +2,8 @@ package com.css.mdemo;
 
 import com.css.mdemo.leetcode.MaxProfit;
 import com.css.mdemo.leetcode.RemoveElements;
+import com.css.mdemo.leetcode.basedatastruct.ListNode;
+import com.css.mdemo.leetcode.linklist.IsPalindrome;
 
 import org.junit.Test;
 
@@ -57,12 +59,19 @@ public class LeetCodeTest {
     @Test
     public void testleedcode() {
         RemoveElements removeElements = new RemoveElements();
-        RemoveElements.ListNode listNode = removeElements.new ListNode(1);
-        RemoveElements.ListNode last = removeElements.removeElements(listNode, 1);
+        ListNode listNode = new ListNode(1);
+        ListNode last = removeElements.removeElements(listNode, 1);
         while (last != null) {
             System.out.println(last.val);
             last = last.next;
         }
-
     }
+    @Test
+    public void testPalindrome() {
+       ListNode listNode = new ListNode(-129);
+       listNode.next = new ListNode(-129);
+        System.out.println(new IsPalindrome().isPalindrome(listNode));
+    }
+
+
 }

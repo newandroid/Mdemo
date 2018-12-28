@@ -1,5 +1,7 @@
 package com.css.mdemo.leetcode;
 
+import com.css.mdemo.leetcode.basedatastruct.ListNode;
+
 public class RemoveElements {
     public ListNode removeElements(ListNode head, int val) {
         if (head == null) return null;
@@ -20,12 +22,4 @@ public class RemoveElements {
         return headNode;
     }
 
-    public class ListNode {
-        public int val;
-        public ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
-    }
 }
