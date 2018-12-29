@@ -52,4 +52,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':uilib')
     implementation project(':pickerview')
+    implementation rootProject.ext.dependencies["rxjava2"]
 }

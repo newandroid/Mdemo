@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class RxTest {
@@ -112,5 +113,32 @@ public class RxTest {
         Disposable disposable = stringObservable.subscribe(onNextConsumer, onErrorConsumer, onCompleteAction);
 //        gload.onNext("you know,i cannot love you");
 //        disposable.dispose();
+    }
+
+    @Test
+    public void just(){
+        Consumer<String> onNextConsumer = new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                System.out.println("RxTest.accept s:" + s);
+            }
+        };
+
+        Consumer<Throwable> onErrorConsumer = new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                throwable.printStackTrace();
+            }
+        };
+
+        Action onCompleteAction = new Action() {
+            @Override
+            public void run() throws Exception {
+                System.out.println("RxTest.run");
+            }
+        };
+        Observable<String> stringObservable = Observable.just("jjj");
+        Observable<String> subscribeOn = stringObservable.subscribeOn(Schedulers.io());
+        Disposable disposable = subscribeOn.subscribe(onNextConsumer, onErrorConsumer, onCompleteAction);
     }
 }
