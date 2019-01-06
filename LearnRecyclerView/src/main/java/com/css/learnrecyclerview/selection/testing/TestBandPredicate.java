@@ -18,7 +18,8 @@ package com.css.learnrecyclerview.selection.testing;
 
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.BandPredicate;
+import com.css.learnrecyclerview.selection.BandPredicate;
+
 
 public class TestBandPredicate extends BandPredicate {
 

@@ -18,9 +18,10 @@ package com.css.learnrecyclerview.selection.testing;
 
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
-public class TestHolder extends ViewHolder {
+
+public class TestHolder extends RecyclerView.ViewHolder {
     public TestHolder(View itemView) {
         super(itemView);
     }

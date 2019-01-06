@@ -16,25 +16,24 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-import static androidx.recyclerview.selection.Shared.VERBOSE;
-
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
+import java.util.Set;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import androidx.recyclerview.selection.SelectionTracker.SelectionPredicate;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 
-import java.util.Set;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+import static com.css.learnrecyclerview.selection.Shared.VERBOSE;
+
 
 /**
  * Provides mouse driven band-selection support when used in conjunction with a {@link RecyclerView}
@@ -53,7 +52,7 @@ import java.util.Set;
  *
  * @param <K> Selection key type. @see {@link StorageStrategy} for supported types.
  */
-class BandSelectionHelper<K> implements OnItemTouchListener {
+class BandSelectionHelper<K> implements RecyclerView.OnItemTouchListener {
 
     static final String TAG = "BandSelectionHelper";
     static final boolean DEBUG = false;
@@ -99,7 +98,7 @@ class BandSelectionHelper<K> implements OnItemTouchListener {
         mLock = lock;
 
         mHost.addOnScrollListener(
-                new OnScrollListener() {
+                new RecyclerView.OnScrollListener() {
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         BandSelectionHelper.this.onScrolled(recyclerView, dx, dy);
@@ -127,7 +126,7 @@ class BandSelectionHelper<K> implements OnItemTouchListener {
             @DrawableRes int bandOverlayId,
             @NonNull ItemKeyProvider<K> keyProvider,
             @NonNull SelectionTracker<K> selectionTracker,
-            @NonNull SelectionPredicate<K> selectionPredicate,
+            @NonNull SelectionTracker.SelectionPredicate<K> selectionPredicate,
             @NonNull BandPredicate bandPredicate,
             @NonNull FocusDelegate<K> focusDelegate,
             @NonNull OperationMonitor lock) {
@@ -306,7 +305,7 @@ class BandSelectionHelper<K> implements OnItemTouchListener {
     }
 
     /**
-     * @see OnScrollListener
+     * @see RecyclerView.OnScrollListener
      */
     private void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
         if (!isActive()) {
@@ -349,6 +348,6 @@ class BandSelectionHelper<K> implements OnItemTouchListener {
          *
          * @param listener
          */
-        abstract void addOnScrollListener(@NonNull OnScrollListener listener);
+        abstract void addOnScrollListener(@NonNull RecyclerView.OnScrollListener listener);
     }
 }

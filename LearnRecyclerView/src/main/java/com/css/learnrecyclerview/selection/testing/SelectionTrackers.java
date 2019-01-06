@@ -16,12 +16,13 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import androidx.recyclerview.selection.DefaultSelectionTracker;
-import androidx.recyclerview.selection.EventBridge;
-import androidx.recyclerview.selection.ItemKeyProvider;
-import androidx.recyclerview.selection.SelectionPredicates;
-import androidx.recyclerview.selection.SelectionTracker;
-import androidx.recyclerview.selection.StorageStrategy;
+
+import com.css.learnrecyclerview.selection.DefaultSelectionTracker;
+import com.css.learnrecyclerview.selection.EventBridge;
+import com.css.learnrecyclerview.selection.ItemKeyProvider;
+import com.css.learnrecyclerview.selection.SelectionPredicates;
+import com.css.learnrecyclerview.selection.SelectionTracker;
+import com.css.learnrecyclerview.selection.StorageStrategy;
 
 public final class SelectionTrackers {
 

@@ -16,24 +16,22 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import static org.junit.Assert.assertTrue;
-
 import android.view.ViewGroup;
 
-import androidx.recyclerview.selection.SelectionTracker;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver;
+import com.css.learnrecyclerview.selection.SelectionTracker;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TestAdapter<K> extends Adapter<TestHolder> {
+import static org.junit.Assert.assertTrue;
+
+public class TestAdapter<K> extends RecyclerView.Adapter<TestHolder> {
 
     private final List<K> mItems = new ArrayList<>();
     private final List<Integer> mNotifiedOfSelection = new ArrayList<>();
-    private final AdapterDataObserver mAdapterObserver;
+    private final RecyclerView.AdapterDataObserver mAdapterObserver;
 
     public TestAdapter() {
         this(Collections.EMPTY_LIST);

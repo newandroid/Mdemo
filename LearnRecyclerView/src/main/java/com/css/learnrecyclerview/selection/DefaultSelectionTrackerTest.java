@@ -26,10 +26,21 @@ import com.css.learnrecyclerview.selection.testing.TestAdapter;
 import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
 import com.css.learnrecyclerview.selection.testing.TestSelectionObserver;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -52,7 +63,7 @@ public class DefaultSelectionTrackerTest {
         mAdapter = new TestAdapter();
         mAdapter.updateTestModelIds(mItems);
 
-        SelectionPredicate selectionPredicate = new SelectionPredicate<String>() {
+        SelectionTracker.SelectionPredicate selectionPredicate = new SelectionTracker.SelectionPredicate<String>() {
 
             @Override
             public boolean canSetStateForKey(String id, boolean nextState) {

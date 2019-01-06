@@ -16,21 +16,16 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import android.graphics.Rect;
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.testing.TestAdapter;
-import androidx.recyclerview.selection.testing.TestAutoScroller;
-import androidx.recyclerview.selection.testing.TestBandPredicate;
-import androidx.recyclerview.selection.testing.TestData;
-import androidx.recyclerview.selection.testing.TestEvents.Builder;
-import androidx.recyclerview.selection.testing.TestItemKeyProvider;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
+import com.css.learnrecyclerview.selection.testing.TestAdapter;
+import com.css.learnrecyclerview.selection.testing.TestAutoScroller;
+import com.css.learnrecyclerview.selection.testing.TestBandPredicate;
+import com.css.learnrecyclerview.selection.testing.TestData;
+import com.css.learnrecyclerview.selection.testing.TestEvents;
+import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +34,12 @@ import org.junit.runner.RunWith;
 import java.util.Collections;
 import java.util.List;
 
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 public class BandSelectionHelperTest {
@@ -46,8 +47,8 @@ public class BandSelectionHelperTest {
     private List<String> mItems;
     private BandSelectionHelper<String> mBandController;
     private boolean mIsActive;
-    private Builder mStartBuilder;
-    private Builder mStopBuilder;
+    private TestEvents.Builder mStartBuilder;
+    private TestEvents.Builder mStopBuilder;
     private MotionEvent mStartEvent;
     private MotionEvent mStopEvent;
     private TestBandHost mBandHost;
@@ -89,8 +90,8 @@ public class BandSelectionHelperTest {
                     }
                 };
 
-        mStartBuilder = new Builder().mouse().primary().action(MotionEvent.ACTION_MOVE);
-        mStopBuilder = new Builder().mouse().action(MotionEvent.ACTION_UP);
+        mStartBuilder = new TestEvents.Builder().mouse().primary().action(MotionEvent.ACTION_MOVE);
+        mStopBuilder = new TestEvents.Builder().mouse().action(MotionEvent.ACTION_UP);
         mStartEvent = mStartBuilder.build();
         mStopEvent = mStopBuilder.build();
     }
@@ -222,7 +223,7 @@ public class BandSelectionHelperTest {
         }
 
         @Override
-        void addOnScrollListener(OnScrollListener listener) {
+        void addOnScrollListener(RecyclerView.OnScrollListener listener) {
         }
     }
 }

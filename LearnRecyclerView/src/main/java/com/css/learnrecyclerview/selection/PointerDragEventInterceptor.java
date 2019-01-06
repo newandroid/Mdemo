@@ -16,30 +16,32 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * OnItemTouchListener that delegates drag events to a drag listener,
- * else sends event to fallback {@link OnItemTouchListener}.
+ * else sends event to fallback {@link RecyclerView.OnItemTouchListener}.
  *
  * <p>See {@link OnDragInitiatedListener} for details on implementing drag and drop.
  */
-final class PointerDragEventInterceptor implements OnItemTouchListener {
+final class PointerDragEventInterceptor implements RecyclerView.OnItemTouchListener {
 
     private final ItemDetailsLookup mEventDetailsLookup;
     private final OnDragInitiatedListener mDragListener;
-    private @Nullable OnItemTouchListener mDelegate;
+    private @Nullable
+    RecyclerView.OnItemTouchListener mDelegate;
 
     PointerDragEventInterceptor(
             ItemDetailsLookup eventDetailsLookup,
             OnDragInitiatedListener dragListener,
-            @Nullable OnItemTouchListener delegate) {
+            @Nullable RecyclerView.OnItemTouchListener delegate) {
 
         checkArgument(eventDetailsLookup != null);
         checkArgument(dragListener != null);

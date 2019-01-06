@@ -16,21 +16,21 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.fail;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
-
-import androidx.recyclerview.selection.testing.SelectionProbe;
-import androidx.recyclerview.selection.testing.TestAdapter;
-import androidx.recyclerview.selection.testing.TestItemKeyProvider;
-import androidx.recyclerview.selection.testing.TestSelectionObserver;
+import com.css.learnrecyclerview.selection.testing.SelectionProbe;
+import com.css.learnrecyclerview.selection.testing.TestAdapter;
+import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
+import com.css.learnrecyclerview.selection.testing.TestSelectionObserver;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.List;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest

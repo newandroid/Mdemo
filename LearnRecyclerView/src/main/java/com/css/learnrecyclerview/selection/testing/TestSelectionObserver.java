@@ -16,16 +16,16 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import androidx.recyclerview.selection.SelectionTracker.SelectionObserver;
+import com.css.learnrecyclerview.selection.SelectionTracker;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class TestSelectionObserver<K> extends SelectionObserver<K> {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class TestSelectionObserver<K> extends SelectionTracker.SelectionObserver<K> {
 
     private final Set<K> mSelected = new HashSet<>();
     private boolean mSelectionChanged = false;

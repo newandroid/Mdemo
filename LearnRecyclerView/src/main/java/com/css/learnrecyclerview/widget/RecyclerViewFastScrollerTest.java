@@ -27,6 +27,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
+import com.css.learnrecyclerview.R;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,9 +36,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.R;
 import androidx.test.annotation.UiThreadTest;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
 import static com.css.learnrecyclerview.widget.RecyclerView.VERTICAL;
@@ -119,24 +121,24 @@ public class RecyclerViewFastScrollerTest extends BaseRecyclerViewInstrumentatio
             @Override
             public void run() {
                 activity.setContentView(
-                        androidx.recyclerview.test.R.layout.fast_scrollbar_test_rv);
+                        R.layout.fast_scrollbar_test_rv);
                 mRecyclerView = (RecyclerView) activity.findViewById(
-                        androidx.recyclerview.test.R.id.recycler_view);
+                        R.id.recycler_view);
                 LinearLayoutManager layout = new LinearLayoutManager(activity.getBaseContext());
                 layout.setOrientation(VERTICAL);
                 mRecyclerView.setLayoutManager(layout);
                 mRecyclerView.setAdapter(new TestAdapter(50));
                 Resources res = getActivity().getResources();
                 mScroller = new FastScroller(mRecyclerView, (StateListDrawable) res.getDrawable(
-                        androidx.recyclerview.test.R.drawable.fast_scroll_thumb_drawable),
+                        R.drawable.fast_scroll_thumb_drawable),
                         res.getDrawable(
-                                androidx.recyclerview.test.R.drawable
+                                R.drawable
                                         .fast_scroll_track_drawable),
                         (StateListDrawable) res.getDrawable(
-                                androidx.recyclerview.test.R.drawable
+                                R.drawable
                                         .fast_scroll_thumb_drawable),
                         res.getDrawable(
-                                androidx.recyclerview.test.R.drawable
+                                R.drawable
                                         .fast_scroll_track_drawable),
                         res.getDimensionPixelSize(R.dimen.fastscroll_default_thickness),
                         res.getDimensionPixelSize(R.dimen.fastscroll_minimum_range),
@@ -170,10 +172,10 @@ public class RecyclerViewFastScrollerTest extends BaseRecyclerViewInstrumentatio
 
     @Test
     public void inflationTest() throws Throwable {
-        setContentView(androidx.recyclerview.test.R.layout.fast_scrollbar_test_rv);
+        setContentView(R.layout.fast_scrollbar_test_rv);
         getInstrumentation().waitForIdleSync();
         RecyclerView view = (RecyclerView) getActivity().findViewById(
-                androidx.recyclerview.test.R.id.recycler_view);
+                R.id.recycler_view);
         assertTrue(view.getItemDecorationCount() == 1);
         assertTrue(view.getItemDecorationAt(0) instanceof FastScroller);
         FastScroller scroller = (FastScroller) view.getItemDecorationAt(0);
@@ -185,10 +187,10 @@ public class RecyclerViewFastScrollerTest extends BaseRecyclerViewInstrumentatio
 
     @Test
     public void removeFastScrollerSuccessful() throws Throwable {
-        setContentView(androidx.recyclerview.test.R.layout.fast_scrollbar_test_rv);
+        setContentView(R.layout.fast_scrollbar_test_rv);
         getInstrumentation().waitForIdleSync();
         final RecyclerView view = (RecyclerView) getActivity().findViewById(
-                androidx.recyclerview.test.R.id.recycler_view);
+                R.id.recycler_view);
         assertTrue(view.getItemDecorationCount() == 1);
         mActivityRule.runOnUiThread(new Runnable() {
             @Override
@@ -302,7 +304,7 @@ public class RecyclerViewFastScrollerTest extends BaseRecyclerViewInstrumentatio
         final TestedFrameLayout testedFrameLayout = activity.getContainer();
 
         RecyclerView recyclerView = (RecyclerView) LayoutInflater.from(activity).inflate(
-                androidx.recyclerview.test.R.layout.fast_scrollbar_test_rv,
+                R.layout.fast_scrollbar_test_rv,
                 testedFrameLayout,
                 false);
 
@@ -370,13 +372,13 @@ public class RecyclerViewFastScrollerTest extends BaseRecyclerViewInstrumentatio
 
         Resources res = getActivity().getResources();
         mScroller = new FastScroller(mRecyclerView, (StateListDrawable) res.getDrawable(
-                androidx.recyclerview.test.R.drawable.fast_scroll_thumb_drawable),
+                R.drawable.fast_scroll_thumb_drawable),
                 res.getDrawable(
-                        androidx.recyclerview.test.R.drawable.fast_scroll_track_drawable),
+                        R.drawable.fast_scroll_track_drawable),
                 (StateListDrawable) res.getDrawable(
-                        androidx.recyclerview.test.R.drawable.fast_scroll_thumb_drawable),
+                        R.drawable.fast_scroll_thumb_drawable),
                 res.getDrawable(
-                        androidx.recyclerview.test.R.drawable.fast_scroll_track_drawable),
+                        R.drawable.fast_scroll_track_drawable),
                 res.getDimensionPixelSize(R.dimen.fastscroll_default_thickness),
                 res.getDimensionPixelSize(R.dimen.fastscroll_minimum_range),
                 res.getDimensionPixelOffset(R.dimen.fastscroll_margin)) {

@@ -16,9 +16,10 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import static androidx.core.util.Preconditions.checkArgument;
+import com.css.learnrecyclerview.selection.ItemKeyProvider;
 
-import androidx.recyclerview.selection.ItemKeyProvider;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * Provides RecyclerView selection code access to stable ids backed

@@ -16,17 +16,18 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
-import static androidx.annotation.VisibleForTesting.PACKAGE_PRIVATE;
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.recyclerview.selection.Shared.VERBOSE;
-
 import android.util.Log;
+
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
-import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+import static androidx.annotation.VisibleForTesting.PACKAGE_PRIVATE;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.selection.Shared.VERBOSE;
 
 /**
  * Provides the necessary glue to notify RecyclerView when selection data changes,

@@ -18,9 +18,10 @@ package com.css.learnrecyclerview.selection;
 
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * The Selection library calls {@link #getItemDetails(MotionEvent)} when it needs

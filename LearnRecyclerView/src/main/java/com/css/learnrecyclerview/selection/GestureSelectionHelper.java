@@ -16,19 +16,20 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-
 import android.graphics.Point;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+
 
 /**
  * GestureSelectionHelper provides logic that interprets a combination
@@ -36,7 +37,7 @@ import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
  * when used in conjunction with RecyclerView and other classes in the ReyclerView
  * selection support package.
  */
-final class GestureSelectionHelper implements OnItemTouchListener {
+final class GestureSelectionHelper implements RecyclerView.OnItemTouchListener {
 
     private static final String TAG = "GestureSelectionHelper";
 

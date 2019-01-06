@@ -16,9 +16,10 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import androidx.recyclerview.selection.SelectionTracker.SelectionPredicate;
 
-public final class TestSelectionPredicate<K> extends SelectionPredicate<K> {
+import com.css.learnrecyclerview.selection.SelectionTracker;
+
+public final class TestSelectionPredicate<K> extends SelectionTracker.SelectionPredicate<K> {
 
     private final boolean mMultiSelect;
 

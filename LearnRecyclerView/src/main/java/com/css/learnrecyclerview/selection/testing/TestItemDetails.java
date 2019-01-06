@@ -18,10 +18,11 @@ package com.css.learnrecyclerview.selection.testing;
 
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.widget.RecyclerView;
+import com.css.learnrecyclerview.selection.ItemDetailsLookup;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
-public final class TestItemDetails extends ItemDetails<String> {
+
+public final class TestItemDetails extends ItemDetailsLookup.ItemDetails<String> {
 
     private int mPosition;
     private String mSelectionKey;

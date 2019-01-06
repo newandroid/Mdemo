@@ -16,11 +16,12 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
+import com.css.learnrecyclerview.selection.FocusDelegate;
+import com.css.learnrecyclerview.selection.ItemDetailsLookup;
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import static org.junit.Assert.assertEquals;
 
-import androidx.recyclerview.selection.FocusDelegate;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.widget.RecyclerView;
 
 public final class TestFocusDelegate<K> extends FocusDelegate<K> {
 
@@ -34,7 +35,7 @@ public final class TestFocusDelegate<K> extends FocusDelegate<K> {
     }
 
     @Override
-    public void focusItem(ItemDetails<K> item) {
+    public void focusItem(ItemDetailsLookup.ItemDetails<K> item) {
         mFocusItemId = item.getSelectionKey();
         mFocusPosition = item.getPosition();
     }

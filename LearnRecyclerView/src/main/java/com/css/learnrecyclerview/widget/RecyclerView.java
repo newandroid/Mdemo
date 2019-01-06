@@ -17,10 +17,6 @@
 
 package com.css.learnrecyclerview.widget;
 
-import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
-import static androidx.core.view.ViewCompat.TYPE_NON_TOUCH;
-import static androidx.core.view.ViewCompat.TYPE_TOUCH;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -57,6 +53,17 @@ import android.widget.EdgeEffect;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
 
+import com.css.learnrecyclerview.R;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
@@ -65,7 +72,6 @@ import androidx.annotation.Px;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.os.TraceCompat;
-import androidx.core.util.Preconditions;
 import androidx.core.view.InputDeviceCompat;
 import androidx.core.view.MotionEventCompat;
 import androidx.core.view.NestedScrollingChild2;
@@ -77,18 +83,11 @@ import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.core.widget.EdgeEffectCompat;
 import androidx.customview.view.AbsSavedState;
-import androidx.recyclerview.R;
-import androidx.recyclerview.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
 import androidx.viewpager.widget.ViewPager;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+import static androidx.core.view.ViewCompat.TYPE_NON_TOUCH;
+import static androidx.core.view.ViewCompat.TYPE_TOUCH;
 
 
 /**
@@ -2479,7 +2478,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * @param edgeEffectFactory The {@link EdgeEffectFactory} instance.
      */
     public void setEdgeEffectFactory(@NonNull EdgeEffectFactory edgeEffectFactory) {
-        Preconditions.checkNotNull(edgeEffectFactory);
+//        Preconditions.checkNotNull(edgeEffectFactory);
         mEdgeEffectFactory = edgeEffectFactory;
         invalidateGlows();
     }
@@ -3426,7 +3425,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         mEatenAccessibilityChangeFlags = 0;
         if (flags != 0 && isAccessibilityEnabled()) {
             final AccessibilityEvent event = AccessibilityEvent.obtain();
-            event.setEventType(AccessibilityEventCompat.TYPE_WINDOW_CONTENT_CHANGED);
+            event.setEventType(AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED);
             AccessibilityEventCompat.setContentChangeTypes(event, flags);
             sendAccessibilityEventUnchecked(event);
         }
@@ -11169,6 +11168,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         return true;
     }
 
+    @SuppressLint("WrongConstant")
     void dispatchPendingImportantForAccessibilityChanges() {
         for (int i = mPendingAccessibilityImportanceChange.size() - 1; i >= 0; i--) {
             ViewHolder viewHolder = mPendingAccessibilityImportanceChange.get(i);

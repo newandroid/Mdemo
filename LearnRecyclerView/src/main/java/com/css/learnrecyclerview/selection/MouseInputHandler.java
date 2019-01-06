@@ -16,18 +16,19 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-import static androidx.recyclerview.selection.Shared.DEBUG;
-import static androidx.recyclerview.selection.Shared.VERBOSE;
-
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.selection.ItemDetailsLookup.ItemDetails;
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.widget.RecyclerView;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+import static com.css.learnrecyclerview.selection.Shared.DEBUG;
+import static com.css.learnrecyclerview.selection.Shared.VERBOSE;
 
 /**
  * A MotionInputHandler that provides the high-level glue for mouse driven selection. This
@@ -195,13 +196,13 @@ final class MouseInputHandler<K> extends MotionInputHandler<K> {
             return false;
         }
 
-        ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
+        ItemDetailsLookup.ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
         return (item != null) && mOnItemActivatedListener.onItemActivated(item, e);
     }
 
     private boolean onRightClick(@NonNull MotionEvent e) {
         if (mDetailsLookup.overItemWithSelectionKey(e)) {
-            @Nullable ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
+            @Nullable ItemDetailsLookup.ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
             if (item != null && !mSelectionTracker.isSelected(item.getSelectionKey())) {
                 mSelectionTracker.clearSelection();
                 selectItem(item);
@@ -214,7 +215,7 @@ final class MouseInputHandler<K> extends MotionInputHandler<K> {
         return mOnContextClickListener.onContextClick(e);
     }
 
-    private void selectOrFocusItem(@NonNull ItemDetails<K> item, @NonNull MotionEvent e) {
+    private void selectOrFocusItem(@NonNull ItemDetailsLookup.ItemDetails<K> item, @NonNull MotionEvent e) {
         if (item.inSelectionHotspot(e) || MotionEvents.isCtrlKeyPressed(e)) {
             selectItem(item);
         } else {

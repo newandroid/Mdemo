@@ -32,16 +32,17 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.view.animation.Interpolator;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.view.GestureDetectorCompat;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.R;
+import com.css.learnrecyclerview.R;
 import com.css.learnrecyclerview.widget.RecyclerView.OnItemTouchListener;
 import com.css.learnrecyclerview.widget.RecyclerView.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.GestureDetectorCompat;
+import androidx.core.view.ViewCompat;
 
 /**
  * This is a utility class to add swipe to dismiss and drag & drop support to RecyclerView.

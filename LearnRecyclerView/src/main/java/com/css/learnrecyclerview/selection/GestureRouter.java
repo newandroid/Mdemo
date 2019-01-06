@@ -16,7 +16,6 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
 
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
@@ -25,6 +24,8 @@ import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
 
 /**
  * GestureRouter is responsible for routing gestures detected by a GestureDetector

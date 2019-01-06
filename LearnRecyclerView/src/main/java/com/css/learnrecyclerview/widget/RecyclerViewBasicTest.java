@@ -16,6 +16,7 @@
 
 package com.css.learnrecyclerview.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.Parcel;
@@ -33,6 +34,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.css.learnrecyclerview.R;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +46,6 @@ import java.util.List;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.test.R;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
@@ -87,7 +89,7 @@ public class RecyclerViewBasicTest {
     }
 
     private void focusSearch() {
-        mRecyclerView.focusSearch(1);
+        mRecyclerView.focusSearch(View.FOCUS_LEFT);
     }
 
     @Test
@@ -345,7 +347,7 @@ public class RecyclerViewBasicTest {
                     @NonNull ViewGroup parent, int viewType) {
                 final LoggingView itemView = new LoggingView(parent.getContext());
                 //noinspection ResourceType
-                itemView.setId(3);
+                itemView.setId(R.id.after);//3
                 return new MockViewHolder(itemView);
             }
         });
@@ -532,16 +534,20 @@ public class RecyclerViewBasicTest {
 
         // On API 15 and lower, focus forward get's translated to focus down.
         View expected = isIcsOrLower ? focusAdapter.mBottomRight : focusAdapter.mBottomLeft;
-        assertEquals(expected, focusAdapter.mTopRight.focusSearch(View.FOCUS_FORWARD));
+//        assertEquals(expected, focusAdapter.mTopRight.focusSearch(View.FOCUS_FORWARD));
+        assertEquals(expected, focusAdapter.mTopRight.focusSearch(View.FOCUS_LEFT));
 
         // On API 15 and lower, focus forward get's translated to focus down, which in this case
         // runs out of the RecyclerView, thus returning null.
         expected = isIcsOrLower ? null : focusAdapter.mBottomRight;
-        assertSame(expected, focusAdapter.mBottomLeft.focusSearch(View.FOCUS_FORWARD));
+//        assertSame(expected, focusAdapter.mBottomLeft.focusSearch(View.FOCUS_FORWARD));
+        assertSame(expected, focusAdapter.mBottomLeft.focusSearch(View.FOCUS_LEFT));
 
         // we don't want looping within RecyclerView
-        assertNull(focusAdapter.mBottomRight.focusSearch(View.FOCUS_FORWARD));
-        assertNull(focusAdapter.mTopLeft.focusSearch(View.FOCUS_BACKWARD));
+//        assertNull(focusAdapter.mBottomRight.focusSearch(View.FOCUS_FORWARD));
+        assertNull(focusAdapter.mBottomRight.focusSearch(View.FOCUS_LEFT));
+//        assertNull(focusAdapter.mTopLeft.focusSearch(View.FOCUS_BACKWARD));
+        assertNull(focusAdapter.mTopLeft.focusSearch(View.FOCUS_LEFT));
     }
 
     @Test
@@ -753,6 +759,7 @@ public class RecyclerViewBasicTest {
         }
     }
 
+    @SuppressLint("AppCompatCustomView")
     static class LoggingView extends TextView {
         private int mOnSavedInstanceCnt = 0;
 

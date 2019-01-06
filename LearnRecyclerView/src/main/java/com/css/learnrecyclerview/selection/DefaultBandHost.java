@@ -28,7 +28,8 @@ import com.css.learnrecyclerview.widget.RecyclerView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
-import static androidx.core.util.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * RecyclerView backed {@link BandSelectionHelper.BandHost}.
@@ -40,13 +41,13 @@ final class DefaultBandHost<K> extends GridModel.GridHost<K> {
     private final RecyclerView mRecyclerView;
     private final Drawable mBand;
     private final ItemKeyProvider<K> mKeyProvider;
-    private final SelectionPredicate<K> mSelectionPredicate;
+    private final SelectionTracker.SelectionPredicate<K> mSelectionPredicate;
 
     DefaultBandHost(
             @NonNull RecyclerView recyclerView,
             @DrawableRes int bandOverlayId,
             @NonNull ItemKeyProvider<K> keyProvider,
-            @NonNull SelectionPredicate<K> selectionPredicate) {
+            @NonNull SelectionTracker.SelectionPredicate<K> selectionPredicate) {
 
         checkArgument(recyclerView != null);
 
@@ -61,7 +62,7 @@ final class DefaultBandHost<K> extends GridModel.GridHost<K> {
         mSelectionPredicate = selectionPredicate;
 
         mRecyclerView.addItemDecoration(
-                new ItemDecoration() {
+                new RecyclerView.ItemDecoration() {
                     @Override
                     public void onDrawOver(
                             Canvas canvas,
@@ -83,12 +84,12 @@ final class DefaultBandHost<K> extends GridModel.GridHost<K> {
     }
 
     @Override
-    void addOnScrollListener(@NonNull OnScrollListener listener) {
+    void addOnScrollListener(@NonNull RecyclerView.OnScrollListener listener) {
         mRecyclerView.addOnScrollListener(listener);
     }
 
     @Override
-    void removeOnScrollListener(@NonNull OnScrollListener listener) {
+    void removeOnScrollListener(@NonNull RecyclerView.OnScrollListener listener) {
         mRecyclerView.removeOnScrollListener(listener);
     }
 

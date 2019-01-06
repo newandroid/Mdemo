@@ -16,15 +16,15 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.selection.SelectionTracker.SelectionPredicate;
-import androidx.recyclerview.widget.RecyclerView;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * A MotionInputHandler that provides the high-level glue for touch driven selection. This class
@@ -39,7 +39,7 @@ final class TouchInputHandler<K> extends MotionInputHandler<K> {
     private static final boolean DEBUG = false;
 
     private final ItemDetailsLookup<K> mDetailsLookup;
-    private final SelectionPredicate<K> mSelectionPredicate;
+    private final SelectionTracker.SelectionPredicate<K> mSelectionPredicate;
     private final OnItemActivatedListener<K> mOnItemActivatedListener;
     private final OnDragInitiatedListener mOnDragInitiatedListener;
     private final Runnable mGestureStarter;
@@ -49,7 +49,7 @@ final class TouchInputHandler<K> extends MotionInputHandler<K> {
             @NonNull SelectionTracker<K> selectionTracker,
             @NonNull ItemKeyProvider<K> keyProvider,
             @NonNull ItemDetailsLookup<K> detailsLookup,
-            @NonNull SelectionPredicate<K> selectionPredicate,
+            @NonNull SelectionTracker.SelectionPredicate<K> selectionPredicate,
             @NonNull Runnable gestureStarter,
             @NonNull OnDragInitiatedListener onDragInitiatedListener,
             @NonNull OnItemActivatedListener<K> onItemActivatedListener,
@@ -81,7 +81,7 @@ final class TouchInputHandler<K> extends MotionInputHandler<K> {
             return false;
         }
 
-        ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
+        ItemDetailsLookup.ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
         // Should really not be null at this point, but...
         if (item == null) {
             return false;
@@ -113,7 +113,7 @@ final class TouchInputHandler<K> extends MotionInputHandler<K> {
             return;
         }
 
-        ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
+        ItemDetailsLookup.ItemDetails<K> item = mDetailsLookup.getItemDetails(e);
         // Should really not be null at this point, but...
         if (item == null) {
             return;

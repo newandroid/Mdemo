@@ -16,8 +16,6 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -25,14 +23,17 @@ import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.R;
+import com.css.learnrecyclerview.widget.RecyclerView;
+
+import java.util.Set;
+
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver;
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
 
-import java.util.Set;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * SelectionTracker provides support for managing a selection of items in a RecyclerView instance.
@@ -177,7 +178,7 @@ public abstract class SelectionTracker<K> {
      */
     public abstract boolean deselect(@NonNull K key);
 
-    abstract AdapterDataObserver getAdapterDataObserver();
+    abstract RecyclerView.AdapterDataObserver getAdapterDataObserver();
 
     /**
      * Attempts to establish a range selection at {@code position}, selecting the item
@@ -800,7 +801,7 @@ public abstract class SelectionTracker<K> {
                         mMonitor);
             }
 
-            OnItemTouchListener pointerEventHandler = new PointerDragEventInterceptor(
+            RecyclerView.OnItemTouchListener pointerEventHandler = new PointerDragEventInterceptor(
                     mDetailsLookup, mOnDragInitiatedListener, bandHelper);
 
             for (int toolType : mPointerToolTypes) {
