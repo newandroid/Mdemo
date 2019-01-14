@@ -2820,8 +2820,9 @@ public class LifeCycleView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Log.d(TAG, "onMeasure() called with: widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
+        Log.d(TAG, "onMeasure() called with: widthMeasureSpec = [" + MeasureSpec.getSize(widthMeasureSpec) + "], heightMeasureSpec = [" + MeasureSpec.getSize(heightMeasureSpec) + "]");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        setMeasuredDimension(10000,100);
     }
 
     @Override

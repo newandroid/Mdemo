@@ -10,18 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- .activitys.RedGreenActivity -->
-        <activity android:name=".activitys.DrawCircleLineActivity">
+        <!-- .activitys.CirCleActivity -->
+        <activity android:name=".activitys.CirCleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.LifeCycleActivity" />
+        <activity android:name=".activitys.DrawCircleLineActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
         <activity android:name=".activitys.CustomDragGroupActivity" />
         <activity android:name=".activitys.RedGreenActivity" />
+        <activity android:name=".activitys.GridViewPagerActivity" />
+        <activity android:name=".activitys.HorizontalGridViewActivity" />
+        <activity android:name=".activitys.LifeCycleActivity" />
+
+
         <activity android:name=".leakcheck.LeakStartActivity" />
         <activity android:name=".leakcheck.LeakActivity"/>
         <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>

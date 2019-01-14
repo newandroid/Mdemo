@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "css.com.applab"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -38,10 +38,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.annotation:annotation:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.1.0-alpha01'
@@ -53,4 +53,5 @@ dependencies {
     implementation project(':uilib')
     implementation project(':pickerview')
     implementation rootProject.ext.dependencies["rxjava2"]
+    implementation 'com.google.android.support:wearable:2.4.0'
 }

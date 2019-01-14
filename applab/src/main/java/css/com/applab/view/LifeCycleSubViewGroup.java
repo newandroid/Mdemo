@@ -1,23 +1,19 @@
-package css.com.applab.view.google;
+package css.com.applab.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RemoteViews;
 
 import css.com.applab.R;
 
-/**
- * Example of writing a custom layout manager.  This is a fairly full-featured
- * layout manager that is relatively general, handling all layout cases.  You
- * can simplify it for more specific cases.
- */
-@RemoteViews.RemoteView
-public class CustomLayout extends ViewGroup {
+
+public class LifeCycleSubViewGroup extends LifeCycleViewGroup{
+    private static final String TAG = "LifeCycleSubViewGroup";
     /** The amount of space used by children in the left gutter. */
     private int mLeftWidth;
 
@@ -28,25 +24,21 @@ public class CustomLayout extends ViewGroup {
     private final Rect mTmpContainerRect = new Rect();
     private final Rect mTmpChildRect = new Rect();
 
-    public CustomLayout(Context context) {
+    public LifeCycleSubViewGroup(Context context) {
         super(context);
+        Log.d(TAG, "LifeCycleSubViewGroup() called with: context = [" + context + "]");
     }
 
-    public CustomLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public LifeCycleSubViewGroup(Context context, AttributeSet attrs) {
+        super(context, attrs,0);
+        Log.d(TAG, "LifeCycleSubViewGroup() called with: context = [" + context + "], attrs = [" + attrs + "]");
     }
 
-    public CustomLayout(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+    public LifeCycleSubViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        Log.d(TAG, "LifeCycleSubViewGroup() called with: context = [" + context + "], attrs = [" + attrs + "], defStyleAttr = [" + defStyleAttr + "]");
     }
 
-    /**
-     * Any layout manager that doesn't scroll will want this.
-     */
-    @Override
-    public boolean shouldDelayChildPressedState() {
-        return false;
-    }
 
     /**
      * Ask all children to measure themselves and compute the measurement of this
@@ -54,6 +46,7 @@ public class CustomLayout extends ViewGroup {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Log.d(TAG, "onMeasure() called with: widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
         int count = getChildCount();
 
         // These keep track of the space we are using on the left and right for
@@ -112,6 +105,7 @@ public class CustomLayout extends ViewGroup {
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Log.d(TAG, "onLayout() called with: changed = [" + changed + "], l = [" + left + "], t = [" + top + "], r = [" + right + "], b = [" + bottom + "]");
         final int count = getChildCount();
 
         // These are the far left and right edges in which we are performing layout.
@@ -168,21 +162,25 @@ public class CustomLayout extends ViewGroup {
 
     @Override
     public LayoutParams generateLayoutParams(AttributeSet attrs) {
-        return new CustomLayout.LayoutParams(getContext(), attrs);
+        Log.d(TAG, "generateLayoutParams() called with: attrs = [" + attrs + "]");
+        return new LayoutParams(getContext(), attrs);
     }
 
     @Override
     protected LayoutParams generateDefaultLayoutParams() {
+        Log.d(TAG, "generateDefaultLayoutParams() called");
         return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     }
 
     @Override
     protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        Log.d(TAG, "generateLayoutParams() called with: p = [" + p + "]");
         return new LayoutParams(p);
     }
 
     @Override
     protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        Log.d(TAG, "checkLayoutParams() called with: p = [" + p + "]");
         return p instanceof LayoutParams;
     }
 
@@ -204,13 +202,14 @@ public class CustomLayout extends ViewGroup {
 
         public LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
+            Log.d(TAG, "LayoutParams() called with: c = [" + c + "], attrs = [" + attrs + "]");
 
             // Pull the layout param values from the layout XML during
             // inflation.  This is not needed if you don't care about
             // changing the layout behavior in XML.
-            TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.CustomLayout_Layout);
-            gravity = a.getInt(R.styleable.CustomLayout_Layout_android_layout_gravity, gravity);
-            position = a.getInt(R.styleable.CustomLayout_Layout_layout_position, position);
+            TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.LifeCycleSubViewGroup_Layout);
+            gravity = a.getInt(R.styleable.LifeCycleSubViewGroup_Layout_android_layout_gravity, gravity);
+            position = a.getInt(R.styleable.LifeCycleSubViewGroup_Layout_sub_layout_position, position);
             a.recycle();
         }
 

@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <css.com.applab.view.LifeCycleViewGroup
+    <css.com.applab.view.LifeCycleSubViewGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <css.com.applab.view.LifeCycleView
+            android:background="@android:color/holo_red_dark"
             android:layout_width="100dp"
             android:layout_height="500dp" />
-    </css.com.applab.view.LifeCycleViewGroup>
+    </css.com.applab.view.LifeCycleSubViewGroup>
 </LinearLayout>

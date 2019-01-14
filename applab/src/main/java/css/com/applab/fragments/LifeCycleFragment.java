@@ -31,7 +31,10 @@ public class LifeCycleFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView() called with: inflater = [" + inflater + "], container = [" + container + "], savedInstanceState = [" + savedInstanceState + "]");
-        return inflater.inflate(R.layout.fragment_life_cycle, container, false);
+        View view;
+        view = inflater.inflate(R.layout.fragment_life_cycle, container, false);
+//        view = new LifeCycleView(getActivity());
+        return view;
     }
 
     @Override

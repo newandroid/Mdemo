@@ -33,7 +33,7 @@ import java.util.Collection;
 
 import androidx.annotation.NonNull;
 
-public class LifeCycleViewGroup extends ViewGroup {
+public abstract class LifeCycleViewGroup extends ViewGroup {
     private static final String TAG = "ViewGroupLiftCycle";
 
     public LifeCycleViewGroup(Context context) {
@@ -42,7 +42,7 @@ public class LifeCycleViewGroup extends ViewGroup {
     }
 
     public LifeCycleViewGroup(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        super(context, attrs,0);
         Log.d(TAG, "ViewGroupLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "]");
     }
 
@@ -51,10 +51,6 @@ public class LifeCycleViewGroup extends ViewGroup {
         Log.d(TAG, "ViewGroupLiftCycle() called with: context = [" + context + "], attrs = [" + attrs + "], defStyleAttr = [" + defStyleAttr + "]");
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.d(TAG, "onLayout() called with: changed = [" + changed + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
-    }
 
     @Override
     public int getDescendantFocusability() {
