@@ -141,4 +141,16 @@ public class RxTest {
         Observable<String> subscribeOn = stringObservable.subscribeOn(Schedulers.io());
         Disposable disposable = subscribeOn.subscribe(onNextConsumer, onErrorConsumer, onCompleteAction);
     }
+
+    @Test
+    public void add(){
+
+    }
+
+    class MyObservable extends java.util.Observable{
+        @Override
+        protected synchronized void setChanged() {
+            super.setChanged();
+        }
+    }
 }
