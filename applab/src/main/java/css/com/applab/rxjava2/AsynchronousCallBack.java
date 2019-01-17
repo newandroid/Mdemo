@@ -23,6 +23,7 @@ public class AsynchronousCallBack {
                 .subscribeOn(Schedulers.io())
                 .delay(2,TimeUnit.SECONDS)
                 .subscribe(s -> taskResult());
+        System.exit(0);
     }
 
     public interface Listner{

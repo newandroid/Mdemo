@@ -1,7 +1,9 @@
 package css.com.applab.rxjava2;
 
 import org.junit.Test;
+import org.reactivestreams.Publisher;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -9,6 +11,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 
@@ -152,5 +155,33 @@ public class RxTest {
         protected synchronized void setChanged() {
             super.setChanged();
         }
+    }
+
+    @Test
+    public void create(){
+
+    }
+
+    @Test
+    public void map(){
+        Flowable.just("jfjfj")
+                .map(new Function<String, Integer>() {
+                    @Override
+                    public Integer apply(String s) throws Exception {
+                        return null;
+                    }
+                })
+                .subscribe();
+    }
+    @Test
+    public void flatmap(){
+        Flowable.just("sjkflajksf")
+               .flatMap(new Function<String, Publisher<Integer>>() {
+                   @Override
+                   public Publisher<Integer> apply(String s) throws Exception {
+                       return Flowable.just(22);
+                   }
+               })
+                .subscribe();
     }
 }
