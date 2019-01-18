@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.UilibLoadActivity -->
-        <activity android:name=".activitys.UilibLoadActivity">
+        <!-- .activitys.ConstraintActivity -->
+        <activity android:name=".activitys.ConstraintActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
         <activity android:name=".leakcheck.LeakActivity"/>
         <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>
         <activity
-            android:name=".activitys.ConstraintActivity"
+            android:name=".activitys.UilibLoadActivity"
             android:label="@string/title_activity_bug_main">
 
         </activity>
