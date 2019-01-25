@@ -2,10 +2,12 @@ package css.com.applab.activitys;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import css.com.applab.R;
+import css.com.applab.fragments.LifeCycleFragment;
 
 public class LifeCycleActivity extends AppCompatActivity {
     private static final String TAG = "LifeCycleActivity";
@@ -15,6 +17,9 @@ public class LifeCycleActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragmentcontainer,new LifeCycleFragment());
+        fragmentTransaction.commit();
     }
 
     @Override

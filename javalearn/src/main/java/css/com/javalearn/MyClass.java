@@ -14,4 +14,8 @@ public class MyClass {
             e.printStackTrace();
         }
     }
+
+    public void hideTest(){
+        new HideMethod().run();
+    }
 }

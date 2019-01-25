@@ -1,5 +1,7 @@
 package css.com.applab;
 
+import android.content.pm.PackageManager;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,8 +12,11 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+    PackageManager packageManager;
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+
+//        packageManager.buildRequestPermissionsIntent
     }
 }

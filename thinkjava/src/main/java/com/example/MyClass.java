@@ -5,6 +5,15 @@ import com.example.generics.LinkStack;
 import java.lang.reflect.Method;
 
 public class MyClass {
+    public static void main(String[] args){
+        System.out.println("hello world!");
+//        ChildClass childClass= new ChildClass();
+        //继承不能继承内部类吗？
+        //官方解释
+        //In the Java language, classes can be derived from other classes,
+        // thereby inheriting fields and methods from those classes.
+//        childClass.InnerClass.class
+    }
 
     public void testReflect(){
         try {

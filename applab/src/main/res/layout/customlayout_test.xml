@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
     <!-- put first view to left. -->
     <TextView
-        android:background="@drawable/ic_launcher_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_position="left"
         android:layout_gravity="fill_vertical|center_horizontal"
-        android:text="l1"/>
+        android:background="@drawable/ic_launcher_background"
+        android:text="l1"
+        app:fontFamily="@font/open_sans_light_add_to"
+        app:layout_position="left" />
 
     <!-- stack second view to left. -->
     <TextView
