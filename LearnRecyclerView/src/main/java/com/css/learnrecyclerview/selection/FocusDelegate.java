@@ -16,9 +16,9 @@
 
 package com.css.learnrecyclerview.selection;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Override methods in this class to provide application specific behaviors
@@ -31,7 +31,7 @@ public abstract class FocusDelegate<K> {
     static <K> FocusDelegate<K> dummy() {
         return new FocusDelegate<K>() {
             @Override
-            public void focusItem(@NonNull ItemDetails<K> item) {
+            public void focusItem(@NonNull ItemDetailsLookup.ItemDetails<K> item) {
             }
 
             @Override
@@ -53,7 +53,7 @@ public abstract class FocusDelegate<K> {
     /**
      * If environment supports focus, focus {@code item}.
      */
-    public abstract void focusItem(@NonNull ItemDetails<K> item);
+    public abstract void focusItem(@NonNull ItemDetailsLookup.ItemDetails<K> item);
 
     /**
      * @return true if there is a focused item.

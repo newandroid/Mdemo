@@ -16,18 +16,19 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.assertEquals;
-
 import android.os.Bundle;
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 
-import androidx.recyclerview.selection.testing.Bundles;
-import androidx.recyclerview.selection.testing.SelectionTrackers;
+import com.css.learnrecyclerview.selection.testing.Bundles;
+import com.css.learnrecyclerview.selection.testing.SelectionTrackers;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests guaranteeing that two distinct selections can be stored side-by-side.

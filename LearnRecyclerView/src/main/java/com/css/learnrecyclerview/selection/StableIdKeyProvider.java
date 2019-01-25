@@ -19,13 +19,13 @@ package com.css.learnrecyclerview.selection;
 import android.util.SparseArray;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * An {@link ItemKeyProvider} that provides stable ids by way of cached
@@ -58,7 +58,7 @@ public final class StableIdKeyProvider extends ItemKeyProvider<Long> {
         mRecyclerView = recyclerView;
 
         mRecyclerView.addOnChildAttachStateChangeListener(
-                new OnChildAttachStateChangeListener() {
+                new RecyclerView.OnChildAttachStateChangeListener() {
                     @Override
                     public void onChildViewAttachedToWindow(View view) {
                         onAttached(view);

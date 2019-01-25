@@ -16,19 +16,20 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-import static androidx.recyclerview.selection.Shared.DEBUG;
-import static androidx.recyclerview.selection.Shared.VERBOSE;
-
 import android.graphics.Point;
 import android.util.Log;
+
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+import static com.css.learnrecyclerview.selection.Shared.DEBUG;
+import static com.css.learnrecyclerview.selection.Shared.VERBOSE;
 
 /**
  * Provides auto-scrolling upon request when user's interaction with the application

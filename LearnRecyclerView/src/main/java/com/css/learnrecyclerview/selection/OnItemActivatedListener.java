@@ -19,7 +19,6 @@ package com.css.learnrecyclerview.selection;
 import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
 
 /**
  * Register an OnItemActivatedListener to be notified when an item is activated
@@ -39,5 +38,5 @@ public interface OnItemActivatedListener<K> {
      *
      * @return true if the event was handled.
      */
-    boolean onItemActivated(@NonNull ItemDetails<K> item, @NonNull MotionEvent e);
+    boolean onItemActivated(@NonNull ItemDetailsLookup.ItemDetails<K> item, @NonNull MotionEvent e);
 }

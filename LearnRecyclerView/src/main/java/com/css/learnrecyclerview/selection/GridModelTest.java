@@ -16,20 +16,12 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.recyclerview.selection.GridModel.NOT_SET;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 
-import androidx.recyclerview.selection.testing.TestAdapter;
-import androidx.recyclerview.selection.testing.TestItemKeyProvider;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
+import com.css.learnrecyclerview.selection.testing.TestAdapter;
+import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import org.junit.After;
 import org.junit.Test;
@@ -40,6 +32,14 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nullable;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static com.css.learnrecyclerview.selection.GridModel.NOT_SET;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -312,7 +312,8 @@ public class GridModelTest {
         private List<Item> mItems = new ArrayList<>();
 
         // Installed by GridModel on construction.
-        private @Nullable OnScrollListener mScrollListener;
+        private @Nullable
+        RecyclerView.OnScrollListener mScrollListener;
 
         TestHost(int numChildren, int numColumns) {
             mNumChildren = numChildren;
@@ -391,12 +392,12 @@ public class GridModelTest {
         }
 
         @Override
-        public void addOnScrollListener(OnScrollListener listener) {
+        public void addOnScrollListener(RecyclerView.OnScrollListener listener) {
             mScrollListener = listener;
         }
 
         @Override
-        public void removeOnScrollListener(OnScrollListener listener) {}
+        public void removeOnScrollListener(RecyclerView.OnScrollListener listener) {}
 
         @Override
         public Point createAbsolutePoint(Point relativePoint) {

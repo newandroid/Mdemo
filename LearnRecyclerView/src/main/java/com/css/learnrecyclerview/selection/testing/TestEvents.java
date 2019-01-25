@@ -22,13 +22,12 @@ import android.view.MotionEvent;
 import android.view.MotionEvent.PointerCoords;
 import android.view.MotionEvent.PointerProperties;
 
-import androidx.annotation.IntDef;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashSet;
 import java.util.Set;
 
+import androidx.annotation.IntDef;
 /**
  * Handy-dandy wrapper class to facilitate the creation of MotionEvents.
  */
@@ -201,7 +200,7 @@ public final class TestEvents {
         }
 
         public Builder unshift() {
-            releaseKey(KeyEvent.META_SHIFT_ON);
+//            releaseKey(KeyEvent.META_SHIFT_ON);
             return this;
         }
 
@@ -211,26 +210,26 @@ public final class TestEvents {
         }
 
         public Builder alt() {
-            pressKey(KeyEvent.META_ALT_ON);
+//            pressKey(KeyEvent.META_ALT_ON);
             return this;
         }
 
         public Builder primary() {
             pressButton(MotionEvent.BUTTON_PRIMARY);
             releaseButton(MotionEvent.BUTTON_SECONDARY);
-            releaseButton(MotionEvent.BUTTON_TERTIARY);
+//            releaseButton(MotionEvent.BUTTON_TERTIARY);
             return this;
         }
 
         public Builder secondary() {
             pressButton(MotionEvent.BUTTON_SECONDARY);
             releaseButton(MotionEvent.BUTTON_PRIMARY);
-            releaseButton(MotionEvent.BUTTON_TERTIARY);
+//            releaseButton(MotionEvent.BUTTON_TERTIARY);
             return this;
         }
 
         public Builder tertiary() {
-            pressButton(MotionEvent.BUTTON_TERTIARY);
+//            pressButton(MotionEvent.BUTTON_TERTIARY);
             releaseButton(MotionEvent.BUTTON_PRIMARY);
             releaseButton(MotionEvent.BUTTON_SECONDARY);
             return this;

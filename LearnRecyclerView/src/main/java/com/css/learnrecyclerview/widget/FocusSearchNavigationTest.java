@@ -26,6 +26,9 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 
+import com.css.learnrecyclerview.R;
+import com.css.learnrecyclerview.test.RecyclerViewTestActivity;
+
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Description;
@@ -41,9 +44,8 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.test.R;
-import androidx.recyclerview.test.RecyclerViewTestActivity;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
 import static com.css.learnrecyclerview.widget.RecyclerView.HORIZONTAL;

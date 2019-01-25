@@ -16,16 +16,17 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.widget.RecyclerView;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+
 
 /**
  * Base class for handlers that can be registered w/ {@link GestureRouter}.
@@ -51,7 +52,7 @@ abstract class MotionInputHandler<K> extends SimpleOnGestureListener {
         mFocusDelegate = focusDelegate;
     }
 
-    final boolean selectItem(@NonNull ItemDetails<K> details) {
+    final boolean selectItem(@NonNull ItemDetailsLookup.ItemDetails<K> details) {
         checkArgument(details != null);
         checkArgument(hasPosition(details));
         checkArgument(hasSelectionKey(details));
@@ -70,7 +71,7 @@ abstract class MotionInputHandler<K> extends SimpleOnGestureListener {
         return true;
     }
 
-    protected final boolean focusItem(@NonNull ItemDetails<K> details) {
+    protected final boolean focusItem(@NonNull ItemDetailsLookup.ItemDetails<K> details) {
         checkArgument(details != null);
         checkArgument(hasSelectionKey(details));
 
@@ -79,7 +80,7 @@ abstract class MotionInputHandler<K> extends SimpleOnGestureListener {
         return true;
     }
 
-    protected final void extendSelectionRange(@NonNull ItemDetails<K> details) {
+    protected final void extendSelectionRange(@NonNull ItemDetailsLookup.ItemDetails<K> details) {
         checkState(mKeyProvider.hasAccess(ItemKeyProvider.SCOPE_MAPPED));
         checkArgument(hasPosition(details));
         checkArgument(hasSelectionKey(details));
@@ -96,17 +97,17 @@ abstract class MotionInputHandler<K> extends SimpleOnGestureListener {
                 && mKeyProvider.hasAccess(ItemKeyProvider.SCOPE_MAPPED);
     }
 
-    boolean shouldClearSelection(@NonNull MotionEvent e, @NonNull ItemDetails<K> item) {
+    boolean shouldClearSelection(@NonNull MotionEvent e, @NonNull ItemDetailsLookup.ItemDetails<K> item) {
         return !MotionEvents.isCtrlKeyPressed(e)
                 && !item.inSelectionHotspot(e)
                 && !mSelectionTracker.isSelected(item.getSelectionKey());
     }
 
-    static boolean hasSelectionKey(@Nullable ItemDetails<?> item) {
+    static boolean hasSelectionKey(@Nullable ItemDetailsLookup.ItemDetails<?> item) {
         return item != null && item.getSelectionKey() != null;
     }
 
-    static boolean hasPosition(@Nullable ItemDetails<?> item) {
+    static boolean hasPosition(@Nullable ItemDetailsLookup.ItemDetails<?> item) {
         return item != null && item.getPosition() != RecyclerView.NO_POSITION;
     }
 }

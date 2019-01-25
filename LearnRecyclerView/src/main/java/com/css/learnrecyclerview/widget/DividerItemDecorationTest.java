@@ -22,11 +22,12 @@ import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.css.learnrecyclerview.R;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.test.R;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;

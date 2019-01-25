@@ -16,22 +16,23 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.testing.SelectionProbe;
-import androidx.recyclerview.selection.testing.SelectionTrackers;
-import androidx.recyclerview.selection.testing.TestAutoScroller;
-import androidx.recyclerview.selection.testing.TestEvents;
-import androidx.recyclerview.widget.RecyclerView;
+import com.css.learnrecyclerview.selection.testing.SelectionProbe;
+import com.css.learnrecyclerview.selection.testing.SelectionTrackers;
+import com.css.learnrecyclerview.selection.testing.TestAutoScroller;
+import com.css.learnrecyclerview.selection.testing.TestEvents;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest

@@ -18,7 +18,8 @@ package com.css.learnrecyclerview.selection.testing;
 
 import android.graphics.Point;
 
-import androidx.recyclerview.selection.AutoScroller;
+import com.css.learnrecyclerview.selection.AutoScroller;
+
 
 public class TestAutoScroller extends AutoScroller {
 

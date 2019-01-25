@@ -27,6 +27,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.css.learnrecyclerview.R;
+import com.css.learnrecyclerview.ext.PollingCheck;
+
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
@@ -47,9 +50,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.test.R;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
-import androidx.testutils.PollingCheck;
 
 import static com.css.learnrecyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
 import static java.util.concurrent.TimeUnit.SECONDS;

@@ -16,17 +16,18 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.recyclerview.selection.Shared.DEBUG;
-import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
 
 import android.util.Log;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.selection.Shared.DEBUG;
+import static com.css.learnrecyclerview.widget.RecyclerView.NO_POSITION;
 
 /**
  * Class providing support for managing range selections.
@@ -46,7 +47,7 @@ final class Range {
      *
      * <p>
      * Provisionally selected items are considered to be selected in
-     * {@link Selection#contains(String)} and related methods. A provisional may be abandoned or
+     * {@link Selection}#contains(String) and related methods. A provisional may be abandoned or
      * merged into the promary selection.
      *
      * <p>

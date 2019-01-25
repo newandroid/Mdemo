@@ -16,24 +16,25 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import static org.junit.Assert.assertEquals;
-
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.selection.OnItemActivatedListener;
+import com.css.learnrecyclerview.selection.ItemDetailsLookup;
+import com.css.learnrecyclerview.selection.OnItemActivatedListener;
+
+import static org.junit.Assert.assertEquals;
+
 
 public final class TestOnItemActivatedListener<K> implements OnItemActivatedListener<K> {
 
-    private ItemDetails<K> mActivated;
+    private ItemDetailsLookup.ItemDetails<K> mActivated;
 
     @Override
-    public boolean onItemActivated(ItemDetails<K> item, MotionEvent e) {
+    public boolean onItemActivated(ItemDetailsLookup.ItemDetails<K> item, MotionEvent e) {
         mActivated = item;
         return true;
     }
 
-    public void assertActivated(ItemDetails<K> expected) {
+    public void assertActivated(ItemDetailsLookup.ItemDetails<K> expected) {
         assertEquals(expected, mActivated);
     }
 }

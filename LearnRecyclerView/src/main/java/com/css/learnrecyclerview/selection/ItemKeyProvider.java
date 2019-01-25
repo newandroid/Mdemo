@@ -16,15 +16,16 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
+import com.css.learnrecyclerview.widget.RecyclerView;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
 
 /**
  * Provides selection library access to stable selection keys identifying items

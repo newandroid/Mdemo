@@ -16,20 +16,19 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import android.graphics.Point;
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.ViewAutoScroller.ScrollHost;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.annotation.Nullable;
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -119,7 +118,7 @@ public final class ViewAutoScrollerTest {
         mHost.assertScrolledBy(expectedScrollDistance);
     }
 
-    private final class TestHost extends ScrollHost {
+    private final class TestHost extends ViewAutoScroller.ScrollHost {
 
         private @Nullable Integer mScrollDistance;
         private @Nullable Runnable mRunnable;

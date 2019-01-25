@@ -208,9 +208,9 @@ public class CustomLayout extends ViewGroup {
             // Pull the layout param values from the layout XML during
             // inflation.  This is not needed if you don't care about
             // changing the layout behavior in XML.
-            TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.CustomLayoutLP);
-            gravity = a.getInt(R.styleable.CustomLayoutLP_android_layout_gravity, gravity);
-            position = a.getInt(R.styleable.CustomLayoutLP_layout_position, position);
+            TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.CustomLayout_Layout);
+            gravity = a.getInt(R.styleable.CustomLayout_Layout_android_layout_gravity, gravity);
+            position = a.getInt(R.styleable.CustomLayout_Layout_layout_position, position);
             a.recycle();
         }
 

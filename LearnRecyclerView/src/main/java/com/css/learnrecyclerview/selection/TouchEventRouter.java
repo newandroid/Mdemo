@@ -16,14 +16,15 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
+import com.css.learnrecyclerview.widget.RecyclerView;
+
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * A class responsible for routing MotionEvents to tool-type specific handlers,
@@ -35,15 +36,15 @@ import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener;
  * {@link RecyclerView#addOnItemTouchListener(OnItemTouchListener)}. Despite "Touch"
  * being in the name, it receives MotionEvents for all types of tools.
  */
-final class TouchEventRouter implements OnItemTouchListener {
+final class TouchEventRouter implements RecyclerView.OnItemTouchListener {
 
     private static final String TAG = "TouchEventRouter";
 
     private final GestureDetector mDetector;
-    private final ToolHandlerRegistry<OnItemTouchListener> mDelegates;
+    private final ToolHandlerRegistry<RecyclerView.OnItemTouchListener> mDelegates;
 
     TouchEventRouter(
-            @NonNull GestureDetector detector, @NonNull OnItemTouchListener defaultDelegate) {
+            @NonNull GestureDetector detector, @NonNull RecyclerView.OnItemTouchListener defaultDelegate) {
 
         checkArgument(detector != null);
         checkArgument(defaultDelegate != null);
@@ -57,7 +58,7 @@ final class TouchEventRouter implements OnItemTouchListener {
                 detector,
                 // Supply a fallback listener does nothing...because the caller
                 // didn't supply a fallback.
-                new OnItemTouchListener() {
+                new RecyclerView.OnItemTouchListener() {
                     @Override
                     public boolean onInterceptTouchEvent(
                             @NonNull RecyclerView unused, @NonNull MotionEvent e) {
@@ -78,10 +79,10 @@ final class TouchEventRouter implements OnItemTouchListener {
 
     /**
      * @param toolType See MotionEvent for details on available types.
-     * @param delegate An {@link OnItemTouchListener} to receive events
+     * @param delegate An {@link RecyclerView.OnItemTouchListener} to receive events
      *     of {@code toolType}.
      */
-    void register(int toolType, @NonNull OnItemTouchListener delegate) {
+    void register(int toolType, @NonNull RecyclerView.OnItemTouchListener delegate) {
         checkArgument(delegate != null);
         mDelegates.set(toolType, delegate);
     }

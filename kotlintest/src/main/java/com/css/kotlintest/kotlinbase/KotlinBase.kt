@@ -1,6 +1,7 @@
 package com.css.kotlintest.kotlinbase
 
 import android.widget.TextView
+import com.css.kotlintest.EqualsBean
 import java.util.*
 
 class KotlinBase {
@@ -49,6 +50,12 @@ class KotlinBase {
         val joinedToString = items.fold("elemnts:") { acc, i-> "$acc $i" }
         println(joinedToString)
 //        val product = items.fold(1, Int::times)
+    }
+
+    public fun equalTest(){
+        val bean = EqualsBean("css")
+        println(bean.name=="css")
+        println(bean.name==="css")
     }
 
 }

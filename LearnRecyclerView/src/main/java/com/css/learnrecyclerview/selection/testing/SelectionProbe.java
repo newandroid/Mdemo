@@ -17,10 +17,13 @@
 package com.css.learnrecyclerview.selection.testing;
 
 
+import com.css.learnrecyclerview.selection.DefaultSelectionTracker;
 import com.css.learnrecyclerview.selection.Selection;
 import com.css.learnrecyclerview.selection.SelectionTracker;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Helper class for making assertions against the state of a {@link DefaultSelectionTracker}

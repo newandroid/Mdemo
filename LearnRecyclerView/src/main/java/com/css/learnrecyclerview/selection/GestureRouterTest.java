@@ -16,24 +16,25 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyFloat;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.testing.TestEvents.Mouse;
-import androidx.recyclerview.selection.testing.TestEvents.Touch;
+import com.css.learnrecyclerview.selection.testing.TestEvents;
+import com.css.learnrecyclerview.selection.testing.TestEvents.Touch;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyFloat;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -55,40 +56,40 @@ public final class GestureRouterTest {
         mRouter.register(MotionEvent.TOOL_TYPE_MOUSE, mHandler);
         mRouter.register(MotionEvent.TOOL_TYPE_FINGER, mAlt);
 
-        mRouter.onDown(Mouse.CLICK);
-        mHandler.assertCalled_onDown(Mouse.CLICK);
+        mRouter.onDown(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onDown(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onDown();
 
-        mRouter.onShowPress(Mouse.CLICK);
-        mHandler.assertCalled_onShowPress(Mouse.CLICK);
+        mRouter.onShowPress(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onShowPress(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onShowPress();
 
-        mRouter.onSingleTapUp(Mouse.CLICK);
-        mHandler.assertCalled_onSingleTapUp(Mouse.CLICK);
+        mRouter.onSingleTapUp(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onSingleTapUp(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onSingleTapUp();
 
-        mRouter.onScroll(null, Mouse.CLICK, -1, -1);
-        mHandler.assertCalled_onScroll(null, Mouse.CLICK, -1, -1);
+        mRouter.onScroll(null, TestEvents.Mouse.CLICK, -1, -1);
+        mHandler.assertCalled_onScroll(null, TestEvents.Mouse.CLICK, -1, -1);
         mAlt.assertNotCalled_onScroll();
 
-        mRouter.onLongPress(Mouse.CLICK);
-        mHandler.assertCalled_onLongPress(Mouse.CLICK);
+        mRouter.onLongPress(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onLongPress(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onLongPress();
 
-        mRouter.onFling(null, Mouse.CLICK, -1, -1);
-        mHandler.assertCalled_onFling(null, Mouse.CLICK, -1, -1);
+        mRouter.onFling(null, TestEvents.Mouse.CLICK, -1, -1);
+        mHandler.assertCalled_onFling(null, TestEvents.Mouse.CLICK, -1, -1);
         mAlt.assertNotCalled_onFling();
 
-        mRouter.onSingleTapConfirmed(Mouse.CLICK);
-        mHandler.assertCalled_onSingleTapConfirmed(Mouse.CLICK);
+        mRouter.onSingleTapConfirmed(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onSingleTapConfirmed(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onSingleTapConfirmed();
 
-        mRouter.onDoubleTap(Mouse.CLICK);
-        mHandler.assertCalled_onDoubleTap(Mouse.CLICK);
+        mRouter.onDoubleTap(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onDoubleTap(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onDoubleTap();
 
-        mRouter.onDoubleTapEvent(Mouse.CLICK);
-        mHandler.assertCalled_onDoubleTapEvent(Mouse.CLICK);
+        mRouter.onDoubleTapEvent(TestEvents.Mouse.CLICK);
+        mHandler.assertCalled_onDoubleTapEvent(TestEvents.Mouse.CLICK);
         mAlt.assertNotCalled_onDoubleTapEvent();
     }
 
@@ -97,14 +98,14 @@ public final class GestureRouterTest {
         mRouter = new GestureRouter<>(mAlt);
         mRouter.register(MotionEvent.TOOL_TYPE_MOUSE, mHandler);
 
-        mRouter.onDown(Touch.TAP);
-        mAlt.assertCalled_onDown(Touch.TAP);
+        mRouter.onDown(TestEvents.Touch.TAP);
+        mAlt.assertCalled_onDown(TestEvents.Touch.TAP);
 
-        mRouter.onShowPress(Touch.TAP);
-        mAlt.assertCalled_onShowPress(Touch.TAP);
+        mRouter.onShowPress(TestEvents.Touch.TAP);
+        mAlt.assertCalled_onShowPress(TestEvents.Touch.TAP);
 
-        mRouter.onSingleTapUp(Touch.TAP);
-        mAlt.assertCalled_onSingleTapUp(Touch.TAP);
+        mRouter.onSingleTapUp(TestEvents.Touch.TAP);
+        mAlt.assertCalled_onSingleTapUp(TestEvents.Touch.TAP);
 
         mRouter.onScroll(null, Touch.TAP, -1, -1);
         mAlt.assertCalled_onScroll(null, Touch.TAP, -1, -1);

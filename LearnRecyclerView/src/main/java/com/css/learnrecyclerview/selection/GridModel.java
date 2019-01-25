@@ -16,8 +16,6 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
@@ -25,17 +23,19 @@ import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.selection.SelectionTracker.SelectionPredicate;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+
 
 /**
  * Provides a band selection item model for views within a RecyclerView. This class queries the
@@ -61,7 +61,7 @@ final class GridModel<K> {
 
     private final GridHost<K> mHost;
     private final ItemKeyProvider<K> mKeyProvider;
-    private final SelectionPredicate<K> mSelectionPredicate;
+    private final SelectionTracker.SelectionPredicate<K> mSelectionPredicate;
 
     private final List<SelectionObserver> mOnSelectionChangedListeners = new ArrayList<>();
 
@@ -99,12 +99,12 @@ final class GridModel<K> {
     // should expand from when Shift+click is used.
     private int mPositionNearestOrigin = NOT_SET;
 
-    private final OnScrollListener mScrollListener;
+    private final RecyclerView.OnScrollListener mScrollListener;
 
     GridModel(
             GridHost host,
             ItemKeyProvider<K> keyProvider,
-            SelectionPredicate<K> selectionPredicate) {
+            SelectionTracker.SelectionPredicate<K> selectionPredicate) {
 
         checkArgument(host != null);
         checkArgument(keyProvider != null);
@@ -114,7 +114,7 @@ final class GridModel<K> {
         mKeyProvider = keyProvider;
         mSelectionPredicate = selectionPredicate;
 
-        mScrollListener = new OnScrollListener() {
+        mScrollListener = new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 GridModel.this.onScrolled(recyclerView, dx, dy);
@@ -760,7 +760,7 @@ final class GridModel<K> {
          *
          * @param listener
          */
-        abstract void removeOnScrollListener(@NonNull OnScrollListener listener);
+        abstract void removeOnScrollListener(@NonNull RecyclerView.OnScrollListener listener);
 
         /**
          * @param relativePoint for which to create absolute point.

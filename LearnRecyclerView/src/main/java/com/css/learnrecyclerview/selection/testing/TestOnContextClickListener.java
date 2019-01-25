@@ -16,11 +16,12 @@
 
 package com.css.learnrecyclerview.selection.testing;
 
-import static org.junit.Assert.assertTrue;
-
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.OnContextClickListener;
+import com.css.learnrecyclerview.selection.OnContextClickListener;
+
+import static org.junit.Assert.assertTrue;
+
 
 public final class TestOnContextClickListener implements OnContextClickListener {
 

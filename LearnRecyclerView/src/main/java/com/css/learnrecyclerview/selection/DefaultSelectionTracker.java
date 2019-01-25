@@ -16,26 +16,25 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-import static androidx.recyclerview.selection.Shared.DEBUG;
-
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RestrictTo;
-import androidx.annotation.VisibleForTesting;
-import androidx.recyclerview.selection.Range.RangeType;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import androidx.annotation.VisibleForTesting;
+
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+import static com.css.learnrecyclerview.selection.Shared.DEBUG;
 
 /**
  * {@link SelectionTracker} providing support for traditional multi-item selection on top
@@ -293,7 +292,7 @@ public class DefaultSelectionTracker<K> extends SelectionTracker<K> {
      * @param position The new end position for the selection range.
      * @param type The type of selection the range should utilize.
      */
-    private void extendRange(int position, @RangeType int type) {
+    private void extendRange(int position, @Range.RangeType int type) {
         checkState(isRangeActive(), "Range start point not set.");
 
         mRange.extendRange(position, type);
@@ -348,7 +347,7 @@ public class DefaultSelectionTracker<K> extends SelectionTracker<K> {
     }
 
     @Override
-    AdapterDataObserver getAdapterDataObserver() {
+    RecyclerView.AdapterDataObserver getAdapterDataObserver() {
         return mAdapterObserver;
     }
 
@@ -424,7 +423,7 @@ public class DefaultSelectionTracker<K> extends SelectionTracker<K> {
         }
     }
 
-    private void updateForRange(int begin, int end, boolean selected, @RangeType int type) {
+    private void updateForRange(int begin, int end, boolean selected, @Range.RangeType int type) {
         switch (type) {
             case Range.TYPE_PRIMARY:
                 updateForRegularRange(begin, end, selected);
@@ -533,7 +532,7 @@ public class DefaultSelectionTracker<K> extends SelectionTracker<K> {
         }
     }
 
-    private static final class AdapterObserver extends AdapterDataObserver {
+    private static final class AdapterObserver extends RecyclerView.AdapterDataObserver {
 
         private final DefaultSelectionTracker<?> mSelectionTracker;
 

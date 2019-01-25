@@ -20,6 +20,8 @@ import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 
+import com.css.learnrecyclerview.ext.PollingCheck;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -32,7 +34,6 @@ import androidx.test.filters.LargeTest;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.filters.Suppress;
 import androidx.test.runner.AndroidJUnit4;
-import androidx.testutils.PollingCheck;
 
 import static com.css.learnrecyclerview.widget.ItemTouchHelper.END;
 import static com.css.learnrecyclerview.widget.ItemTouchHelper.LEFT;

@@ -16,19 +16,19 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.recyclerview.selection.GestureSelectionHelper.RecyclerViewDelegate;
-import androidx.recyclerview.selection.testing.TestEvents;
+import com.css.learnrecyclerview.selection.testing.TestEvents;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -43,28 +43,28 @@ public class GestureSelectionHelper_RecyclerViewDelegateTest {
     @Test
     public void testLtrPastLastItem() {
         MotionEvent event = createEvent(100, 100);
-        assertTrue(RecyclerViewDelegate.isPastLastItem(
+        assertTrue(GestureSelectionHelper.RecyclerViewDelegate.isPastLastItem(
                 TOP_BORDER, LEFT_BORDER, RIGHT_BORDER, event, View.LAYOUT_DIRECTION_LTR));
     }
 
     @Test
     public void testLtrPastLastItem_Inverse() {
         MotionEvent event = createEvent(10, 10);
-        assertFalse(RecyclerViewDelegate.isPastLastItem(
+        assertFalse(GestureSelectionHelper.RecyclerViewDelegate.isPastLastItem(
                 TOP_BORDER, LEFT_BORDER, RIGHT_BORDER, event, View.LAYOUT_DIRECTION_LTR));
     }
 
     @Test
     public void testRtlPastLastItem() {
         MotionEvent event = createEvent(10, 30);
-        assertTrue(RecyclerViewDelegate.isPastLastItem(
+        assertTrue(GestureSelectionHelper.RecyclerViewDelegate.isPastLastItem(
                 TOP_BORDER, LEFT_BORDER, RIGHT_BORDER, event, View.LAYOUT_DIRECTION_RTL));
     }
 
     @Test
     public void testRtlPastLastItem_Inverse() {
         MotionEvent event = createEvent(100, 100);
-        assertFalse(RecyclerViewDelegate.isPastLastItem(
+        assertFalse(GestureSelectionHelper.RecyclerViewDelegate.isPastLastItem(
                 TOP_BORDER, LEFT_BORDER, RIGHT_BORDER, event, View.LAYOUT_DIRECTION_RTL));
     }
 

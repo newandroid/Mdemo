@@ -22,11 +22,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.css.learnrecyclerview.R;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.test.R;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.SdkSuppress;
 import androidx.test.filters.SmallTest;

@@ -16,32 +16,31 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.recyclerview.selection.testing.TestEvents.Touch.TAP;
-
-import static org.junit.Assert.assertFalse;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-import androidx.recyclerview.selection.testing.SelectionProbe;
-import androidx.recyclerview.selection.testing.SelectionTrackers;
-import androidx.recyclerview.selection.testing.TestAdapter;
-import androidx.recyclerview.selection.testing.TestData;
-import androidx.recyclerview.selection.testing.TestFocusDelegate;
-import androidx.recyclerview.selection.testing.TestItemDetailsLookup;
-import androidx.recyclerview.selection.testing.TestItemKeyProvider;
-import androidx.recyclerview.selection.testing.TestOnItemActivatedListener;
-import androidx.recyclerview.selection.testing.TestRunnable;
-import androidx.recyclerview.selection.testing.TestSelectionPredicate;
-import androidx.recyclerview.widget.RecyclerView;
+import com.css.learnrecyclerview.selection.testing.SelectionProbe;
+import com.css.learnrecyclerview.selection.testing.SelectionTrackers;
+import com.css.learnrecyclerview.selection.testing.TestAdapter;
+import com.css.learnrecyclerview.selection.testing.TestData;
+import com.css.learnrecyclerview.selection.testing.TestFocusDelegate;
+import com.css.learnrecyclerview.selection.testing.TestItemDetailsLookup;
+import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
+import com.css.learnrecyclerview.selection.testing.TestOnItemActivatedListener;
+import com.css.learnrecyclerview.selection.testing.TestRunnable;
+import com.css.learnrecyclerview.selection.testing.TestSelectionPredicate;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.List;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Touch.TAP;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -88,7 +87,7 @@ public final class TouchInputHandlerTest {
 
     @Test
     public void testTap_ActivatesWhenNoExistingSelection() {
-        ItemDetails doc = mDetailsLookup.initAt(11);
+        ItemDetailsLookup.ItemDetails doc = mDetailsLookup.initAt(11);
         mInputDelegate.onSingleTapUp(TAP);
 
         mActivationCallbacks.assertActivated(doc);

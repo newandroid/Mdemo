@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="css.com.applab">
 
     <application
@@ -8,26 +9,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.RedGreenActivity -->
-        <activity android:name=".activitys.RedGreenActivity">
+        <!-- .activitys.ConstraintActivity -->
+        <activity android:name=".activitys.ConstraintActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.LifeCycleActivity" />
+        <activity android:name=".activitys.DrawCircleLineActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
         <activity android:name=".activitys.BezierCurveActivity" />
         <activity android:name=".activitys.CustomDragGroupActivity" />
-        <activity android:name=".activitys.DrawCircleLineActivity" />
+        <activity android:name=".activitys.RedGreenActivity" />
+        <activity android:name=".activitys.GridViewPagerActivity" />
+        <activity android:name=".activitys.HorizontalGridViewActivity" />
+        <activity android:name=".activitys.LifeCycleActivity" />
+        <activity android:name=".activitys.CirCleActivity" />
+        <activity android:name=".activitys.Rxjava2RuntimeActivity" />
+
+
         <activity android:name=".leakcheck.LeakStartActivity" />
         <activity android:name=".leakcheck.LeakActivity"/>
         <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>
         <activity
-            android:name=".activitys.ConstraintActivity"
+            android:name=".activitys.UilibLoadActivity"
             android:label="@string/title_activity_bug_main">
 
         </activity>

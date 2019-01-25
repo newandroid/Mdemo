@@ -16,18 +16,20 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.core.util.Preconditions.checkArgument;
-import static androidx.core.util.Preconditions.checkState;
-import static androidx.recyclerview.selection.Shared.DEBUG;
 
 import android.util.Log;
 
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+
+import static com.css.learnrecyclerview.ext.Preconditions.checkArgument;
+import static com.css.learnrecyclerview.ext.Preconditions.checkState;
+import static com.css.learnrecyclerview.selection.Shared.DEBUG;
 
 /**
  * OperationMonitor provides a mechanism to coordinate application

@@ -16,36 +16,36 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.ALT_CLICK;
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.CLICK;
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.CTRL_CLICK;
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.SECONDARY_CLICK;
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.SHIFT_CLICK;
-import static androidx.recyclerview.selection.testing.TestEvents.Mouse.TERTIARY_CLICK;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.testing.SelectionProbe;
-import androidx.recyclerview.selection.testing.SelectionTrackers;
-import androidx.recyclerview.selection.testing.TestAdapter;
-import androidx.recyclerview.selection.testing.TestData;
-import androidx.recyclerview.selection.testing.TestEvents;
-import androidx.recyclerview.selection.testing.TestFocusDelegate;
-import androidx.recyclerview.selection.testing.TestItemDetails;
-import androidx.recyclerview.selection.testing.TestItemDetailsLookup;
-import androidx.recyclerview.selection.testing.TestItemKeyProvider;
-import androidx.recyclerview.selection.testing.TestOnContextClickListener;
-import androidx.recyclerview.selection.testing.TestOnItemActivatedListener;
-import androidx.recyclerview.widget.RecyclerView;
+import com.css.learnrecyclerview.selection.testing.SelectionProbe;
+import com.css.learnrecyclerview.selection.testing.SelectionTrackers;
+import com.css.learnrecyclerview.selection.testing.TestAdapter;
+import com.css.learnrecyclerview.selection.testing.TestData;
+import com.css.learnrecyclerview.selection.testing.TestEvents;
+import com.css.learnrecyclerview.selection.testing.TestFocusDelegate;
+import com.css.learnrecyclerview.selection.testing.TestItemDetails;
+import com.css.learnrecyclerview.selection.testing.TestItemDetailsLookup;
+import com.css.learnrecyclerview.selection.testing.TestItemKeyProvider;
+import com.css.learnrecyclerview.selection.testing.TestOnContextClickListener;
+import com.css.learnrecyclerview.selection.testing.TestOnItemActivatedListener;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.ALT_CLICK;
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.CLICK;
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.CTRL_CLICK;
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.SECONDARY_CLICK;
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.SHIFT_CLICK;
+import static com.css.learnrecyclerview.selection.testing.TestEvents.Mouse.TERTIARY_CLICK;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest

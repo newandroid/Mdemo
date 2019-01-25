@@ -16,15 +16,7 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.recyclerview.selection.Range.TYPE_PRIMARY;
-import static androidx.recyclerview.selection.Range.TYPE_PROVISIONAL;
-
-import static org.junit.Assert.assertEquals;
-
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
-
-import androidx.recyclerview.selection.testing.TestData;
+import com.css.learnrecyclerview.selection.testing.TestData;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +24,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 import java.util.Stack;
+
+import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import static com.css.learnrecyclerview.selection.Range.TYPE_PRIMARY;
+import static com.css.learnrecyclerview.selection.Range.TYPE_PROVISIONAL;
+import static org.junit.Assert.assertEquals;
 
 /**
  * MouseInputDelegate / SelectHelper integration test covering the shared

@@ -18,7 +18,7 @@ package com.css.learnrecyclerview.selection.testing;
 
 import android.view.MotionEvent;
 
-import androidx.recyclerview.selection.ItemDetailsLookup;
+import com.css.learnrecyclerview.selection.ItemDetailsLookup;
 
 import javax.annotation.Nullable;
 

@@ -16,13 +16,13 @@
 
 package com.css.learnrecyclerview.selection;
 
-import static androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
-
 import android.content.ClipData;
 import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+
+import static com.css.learnrecyclerview.selection.ItemDetailsLookup.ItemDetails;
 
 /**
  * Register an OnDragInitiatedListener to be notified when user intent to perform drag and drop
