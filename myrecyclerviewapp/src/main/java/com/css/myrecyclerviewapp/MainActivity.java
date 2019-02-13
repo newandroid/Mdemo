@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
         pagerGridSnapHelper.attachToRecyclerView(recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new RecyclerView.Adapter() {
+        recyclerView.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 return new RecyclerView.ViewHolder(new Button(parent.getContext())) {
+
                 };
             }
 
