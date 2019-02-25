@@ -2,12 +2,13 @@ package com.css.mdemo;
 
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.css.mdemo.view.PieChart;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.sample_office_view);
 //        setContentView(R.layout.main);
 //        initView();
-
         test();
     }
 

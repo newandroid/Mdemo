@@ -1,6 +1,7 @@
 package com.css.myrecyclerviewapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private int random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
                 TextView itemView = (TextView) holder.itemView;
-                itemView.setText("" + position);
+                itemView.setText("" + position + " r:" + random);
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        random = createRandom();
+                        notifyItemChanged(position);
+                    }
+                });
             }
 
             @Override
@@ -66,9 +75,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-                TextView itemView = (TextView) holder.itemView;
-                itemView.setText("" + position);
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+                final TextView itemView = (TextView) holder.itemView;
+                itemView.setText("" + position + " r:" + random);
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        random = createRandom();
+                        notifyItemChanged(position);
+                    }
+                });
             }
 
             @Override
@@ -76,5 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 return 100;
             }
         });
+    }
+
+    private int createRandom(){
+        return (int) (Math.random()*100);
     }
 }

@@ -53,6 +53,7 @@ dependencies {
     implementation project(':uilib')
     implementation project(':pickerview')
     implementation rootProject.ext.dependencies["rxjava2"]
+    implementation rootProject.ext.dependencies["rxandroid2"]
     implementation 'com.google.android.support:wearable:2.4.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
