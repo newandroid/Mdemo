@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.Rxjava2RuntimeActivity -->
-        <activity android:name=".activitys.Rxjava2RuntimeActivity">
+        <!-- .activitys.CutDownTvActivity -->
+        <activity android:name=".activitys.CutDownTvActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,20 +29,18 @@
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.CirCleActivity" />
         <activity android:name=".activitys.ConstraintActivity" />
-
-
         <activity android:name=".leakcheck.LeakStartActivity" />
-        <activity android:name=".leakcheck.LeakActivity"/>
-        <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>
+        <activity android:name=".leakcheck.LeakActivity" />
+        <activity android:name=".fragmentcannotshowbug.BugMainActivity" />
         <activity
             android:name=".activitys.UilibLoadActivity"
-            android:label="@string/title_activity_bug_main">
-
-        </activity>
+            android:label="@string/title_activity_bug_main"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".activitys.Rxjava2RuntimeActivity"></activity>
     </application>
 
 </manifest>
