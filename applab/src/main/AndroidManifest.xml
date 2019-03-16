@@ -34,13 +34,17 @@
         <activity android:name=".fragmentcannotshowbug.BugMainActivity" />
         <activity
             android:name=".activitys.UilibLoadActivity"
-            android:label="@string/title_activity_bug_main"></activity>
+            android:label="@string/title_activity_bug_main" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activitys.Rxjava2RuntimeActivity"></activity>
+        <activity android:name=".activitys.Rxjava2RuntimeActivity" />
+        <activity
+            android:name=".activitys.StringformatActivity"
+            android:label="@string/title_activity_stringformat"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
