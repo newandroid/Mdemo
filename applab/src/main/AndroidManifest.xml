@@ -44,7 +44,8 @@
         <activity
             android:name=".activitys.StringformatActivity"
             android:label="@string/title_activity_stringformat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activitys.SeekBarActivity"></activity>
     </application>
 
 </manifest>
