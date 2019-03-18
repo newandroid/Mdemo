@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.CutDownTvActivity -->
-        <activity android:name=".activitys.CutDownTvActivity">
+        <!-- .activitys.SeekBarActivity -->
+        <activity android:name=".activitys.SeekBarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +45,7 @@
             android:name=".activitys.StringformatActivity"
             android:label="@string/title_activity_stringformat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activitys.SeekBarActivity"></activity>
+        <activity android:name=".activitys.CutDownTvActivity"></activity>
     </application>
 
 </manifest>
