@@ -45,7 +45,8 @@
             android:name=".activitys.StringformatActivity"
             android:label="@string/title_activity_stringformat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activitys.CutDownTvActivity"></activity>
+        <activity android:name=".activitys.CutDownTvActivity" />
+        <activity android:name=".activitys.ContextMenuActivity"></activity>
     </application>
 
 </manifest>
