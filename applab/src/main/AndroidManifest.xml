@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.ContextMenuActivity -->
-        <activity android:name=".activitys.ContextMenuActivity">
+        <!-- .activitys.ChartViewActivity -->
+        <activity android:name=".activitys.ChartViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activitys.CutDownTvActivity" />
         <activity android:name=".activitys.SeekBarActivity" />
-        <activity android:name=".activitys.ChartViewActivity"></activity>
+        <activity android:name=".activitys.ContextMenuActivity"></activity>
     </application>
 
 </manifest>
