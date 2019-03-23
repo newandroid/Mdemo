@@ -7,4 +7,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_stringformat">StringformatActivity</string>
+    <string-array name="flash_array">
+        <item>SLOW</item>
+        <item>MEDIUM</item>
+        <item>FAST</item>
+    </string-array>
+
 </resources>

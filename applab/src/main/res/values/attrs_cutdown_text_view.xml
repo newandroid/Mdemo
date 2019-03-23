@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="CutdownTextView">
+        <attr name="CutdownTextString" format="string" />
+        <attr name="CutdownTextDimension" format="dimension" />
+        <attr name="CutdownTextColor" format="color" />
+        <attr name="CutdownTextDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

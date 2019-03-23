@@ -45,7 +45,12 @@ public class JavaUnitTest {
     }
 
     @Test
-    public void testInherit(){
+    public void test(){
+        try {
+            System.out.println(Integer.valueOf(""));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

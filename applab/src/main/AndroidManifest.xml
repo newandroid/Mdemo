@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.ConstraintActivity -->
-        <activity android:name=".activitys.ConstraintActivity">
+        <!-- .activitys.ChartViewActivity -->
+        <activity android:name=".activitys.ChartViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,21 +29,26 @@
         <activity android:name=".activitys.HorizontalGridViewActivity" />
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.CirCleActivity" />
-        <activity android:name=".activitys.Rxjava2RuntimeActivity" />
-
-
+        <activity android:name=".activitys.ConstraintActivity" />
         <activity android:name=".leakcheck.LeakStartActivity" />
-        <activity android:name=".leakcheck.LeakActivity"/>
-        <activity android:name=".fragmentcannotshowbug.BugMainActivity"/>
+        <activity android:name=".leakcheck.LeakActivity" />
+        <activity android:name=".fragmentcannotshowbug.BugMainActivity" />
         <activity
             android:name=".activitys.UilibLoadActivity"
-            android:label="@string/title_activity_bug_main">
-
-        </activity>
+            android:label="@string/title_activity_bug_main" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".activitys.Rxjava2RuntimeActivity" />
+        <activity
+            android:name=".activitys.StringformatActivity"
+            android:label="@string/title_activity_stringformat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activitys.CutDownTvActivity" />
+        <activity android:name=".activitys.SeekBarActivity" />
+        <activity android:name=".activitys.ContextMenuActivity"></activity>
     </application>
 
 </manifest>
