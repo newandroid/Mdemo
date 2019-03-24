@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 public class BezierCurveView extends View {
     // 3 point 0,0 0.97,0.5 1,1
     //redesign 300*300 0,0 291,150 300,300
-    //fake curve support point 280,10
+    //fake curve support point 280,ListviewTitleLayout
     private Paint paint;
     private Paint paintPoint;
     private Path path;

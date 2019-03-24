@@ -48,7 +48,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activitys.CutDownTvActivity" />
         <activity android:name=".activitys.SeekBarActivity" />
-        <activity android:name=".activitys.ContextMenuActivity"></activity>
+        <activity android:name=".activitys.ContextMenuActivity" />
+        <activity android:name=".activitys.ContryListActivity"></activity>
     </application>
 
 </manifest>

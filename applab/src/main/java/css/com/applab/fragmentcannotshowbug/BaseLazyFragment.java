@@ -25,7 +25,7 @@ import androidx.fragment.app.Fragment;
  * transaction.hide(aFragment);
  * transaction.show(aFragment);
  *
- * update 2017/01/23
+ * update 2017/BackVerifyDialogLayout/23
  * 忽略isFirstLoad的值，强制刷新数据，但仍要Visible & Prepared
  * 一般用于PagerAdapter需要同时刷新全部子Fragment的场景
  * 不要new 新的 PagerAdapter 而采取reset数据的方式
@@ -47,9 +47,9 @@ public abstract class BaseLazyFragment extends Fragment {
     private boolean isFragmentVisible;
     /**
      * 标志位，View已经初始化完成。
-     * 2016/04/29
+     * 2016/ContactListPageLayout/29
      * 用isAdded()属性代替
-     * 2016/05/03
+     * 2016/ContactsListviewItemLayout/ContactDetailPageLayout
      * isPrepared还是准一些,isAdded有可能出现onCreateView没走完但是isAdded了
      */
     private boolean isPrepared;
@@ -84,7 +84,7 @@ public abstract class BaseLazyFragment extends Fragment {
         // 导致initData反复执行,所以这里注释掉
         // isFirstLoad = true;
 
-        // 2016/04/29
+        // 2016/ContactListPageLayout/29
         // 取消 isFirstLoad = true的注释 , 因为上述的initData本身就是应该执行的
         // onCreateView执行 证明被移出过FragmentManager initData确实要执行.
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
