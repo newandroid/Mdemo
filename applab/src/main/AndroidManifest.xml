@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.ImageTestActivity -->
-        <activity android:name=".activitys.ImageTestActivity">
+        <!-- .activitys.GestureDetectorActivity -->
+        <activity android:name=".activitys.GestureDetectorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,8 +49,9 @@
         <activity android:name=".activitys.CutDownTvActivity" />
         <activity android:name=".activitys.SeekBarActivity" />
         <activity android:name=".activitys.ContextMenuActivity" />
-        <activity android:name=".activitys.ChartViewActivity"></activity>
-        <activity android:name=".activitys.ContryListActivity"></activity>
+        <activity android:name=".activitys.ChartViewActivity" />
+        <activity android:name=".activitys.ContryListActivity" />
+        <activity android:name=".activitys.ImageTestActivity"/>
     </application>
 
 </manifest>

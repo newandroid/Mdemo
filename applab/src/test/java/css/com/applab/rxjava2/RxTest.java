@@ -115,7 +115,7 @@ public class RxTest {
         Observable<String> stringObservable = Observable.create(observableOnSubscribe);
         Disposable disposable = stringObservable.subscribe(onNextConsumer, onErrorConsumer, onCompleteAction);
 //        gload.onNext("you know,i cannot love you");
-//        disposable.dispose();
+        disposable.dispose();
     }
 
     @Test

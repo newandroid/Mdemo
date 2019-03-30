@@ -23,7 +23,6 @@ import css.com.applab.view.RoomCustomView;
 public class CustomDragGroupActivity extends AppCompatActivity {
     MyImageView iv;
     RoomCustomView customView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +84,7 @@ public class CustomDragGroupActivity extends AppCompatActivity {
                         float moveX = event.getX();
                         float moveY = event.getY();
                         iv.layout((int) (moveX - w / 2), (int) (moveY - h / 2), (int) (moveX + w / 2), (int) (moveY + h / 2));
-                        System.out.println("x:"+event.getX()+" y:"+event.getY());
+                        System.out.println("x:" + event.getX() + " y:" + event.getY());
                         return true;
                     case DragEvent.ACTION_DRAG_ENDED:
                         System.out.println("ACTION_DRAG_ENDED");
