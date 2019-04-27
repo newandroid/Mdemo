@@ -15,11 +15,11 @@ public class CutDownTvActivity extends AppCompatActivity {
         setContentView(cutdownTextView);
         cutdownTextView.setOnClickListener(v -> {
             if (!isStart) {
-                cutdownTextView.start();
+                cutdownTextView.start(System.currentTimeMillis(), 60, true);
                 isStart = true;
             } else {
                 isStart = false;
-                cutdownTextView.reset();
+//                cutdownTextView.s();
             }
 
         });

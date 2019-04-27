@@ -13,6 +13,7 @@ import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 
 public class RxTest {
@@ -159,7 +160,6 @@ public class RxTest {
 
     @Test
     public void create(){
-
     }
 
     @Test
@@ -183,6 +183,25 @@ public class RxTest {
                    }
                })
                 .subscribe();
+    }
+    @Test
+    public void pushlishTest() {
+        PublishSubject<String> delay = PublishSubject.create();
+        Disposable complte = delay.subscribeOn(Schedulers.io())
+                .subscribe(s -> {
+                    System.out.println("thread:" + Thread.currentThread().getName() + " s:" + s);
+                }, e -> e.printStackTrace(), () -> {
+                    System.out.println("complte");
+                });
+        delay.onNext("45454");
+        delay.onComplete();
+        complte.dispose();
+
+        try {
+            Thread.sleep(3 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 

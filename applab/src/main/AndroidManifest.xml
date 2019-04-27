@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- .activitys.GestureDetectorActivity -->
-        <activity android:name=".activitys.GestureDetectorActivity">
+        <!-- .activitys.CutDownTvListActivity -->
+        <activity android:name=".activitys.CutDownTvListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         <activity android:name=".activitys.DrawCircleLineActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
         <activity android:name=".activitys.BezierCurveActivity" />
-        <activity android:name=".activitys.CustomDragGroupActivity" />
+        <activity android:name=".activitys.GestureDetectorActivity" />
         <activity android:name=".activitys.RedGreenActivity" />
         <activity android:name=".activitys.GridViewPagerActivity" />
         <activity android:name=".activitys.HorizontalGridViewActivity" />
@@ -51,7 +51,8 @@
         <activity android:name=".activitys.ContextMenuActivity" />
         <activity android:name=".activitys.ChartViewActivity" />
         <activity android:name=".activitys.ContryListActivity" />
-        <activity android:name=".activitys.ImageTestActivity"/>
+        <activity android:name=".activitys.ImageTestActivity" />
+        <activity android:name=".activitys.CustomDragGroupActivity"/>
     </application>
 
 </manifest>
