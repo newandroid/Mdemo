@@ -32,11 +32,14 @@ public class CutDownTvListActivity extends AppCompatActivity {
         adapter = new MyAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.HORIZONTAL));
-        refresh();
-
 
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
+        refresh();
+        findViewById(R.id.btn).setOnClickListener(v -> {
+//            refresh();
+            adapter.notifyDataSetChanged();
+        });
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
@@ -49,6 +52,7 @@ public class CutDownTvListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+            System.out.println("MyAdapter.onBindViewHolder position:" + position);
             Bean item = datas.get(position);
             holder.textView.start(item.getLastTimestap(), item.getPeriodSecond(), item.isOn());
             holder.positionTv.setText(String.valueOf(position));
@@ -56,10 +60,14 @@ public class CutDownTvListActivity extends AppCompatActivity {
             holder.switchView.setOnClickListener(v -> {
                 item.isOn = !item.isOn;
                 item.setLastTimestap(System.currentTimeMillis());
-                notifyItemChanged(position);
+                recyclerView.post(() -> {
+                    notifyItemChanged(position);
+                });
+
             });
             holder.textView.setListener(() -> {
                 recyclerView.post(() -> {
+                    System.out.println("position:" + position + " holder.textView:" + holder.textView);
                     notifyItemChanged(position);
                 });
             });
@@ -125,5 +133,9 @@ public class CutDownTvListActivity extends AppCompatActivity {
             bean.periodSecond = 20;
             datas.add(bean);
         }
+        recyclerView.post(() -> {
+            adapter.notifyDataSetChanged();
+        });
+
     }
 }

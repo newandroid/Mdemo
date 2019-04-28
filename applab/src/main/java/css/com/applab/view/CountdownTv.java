@@ -39,7 +39,7 @@ public class CountdownTv extends AppCompatTextView {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (isTimerRunning()) stopTimer();
+//        if (isTimerRunning()) stopTimer();
     }
 
     private void init() {
@@ -115,14 +115,14 @@ public class CountdownTv extends AppCompatTextView {
 
 
     private void startTimer() {
-        System.out.println("CountdownTv.startTimer");
+        System.out.println("CountdownTv.startTimer " + this);
         isKeepGoing = true;
         new Thread(new SleepThread()).start();
     }
 
     private void stopTimer() {
         isKeepGoing = false;
-        System.out.println("CountdownTv.stopTimer");
+        System.out.println("CountdownTv.stopTimer " + this);
         show(periodSecond);
         if (listener != null) listener.onStopTime();
     }
