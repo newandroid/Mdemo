@@ -3,6 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="css.com.applab">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+    Allows Glide to monitor connectivity status and restart failed requests if users go from a
+    a disconnected to a connected network state.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <!-- .activitys.CutDownTvListActivity -->
-        <activity android:name=".activitys.CutDownTvListActivity">
+        <activity android:name=".activitys.GlideActivity"/>
+        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.GlideActivity -->
+        <activity android:name=".activitys.EditextDialogCompatibleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +61,8 @@
         <activity android:name=".activitys.ChartViewActivity" />
         <activity android:name=".activitys.ContryListActivity" />
         <activity android:name=".activitys.ImageTestActivity" />
-        <activity android:name=".activitys.CustomDragGroupActivity"/>
+        <activity android:name=".activitys.CustomDragGroupActivity" />
+        <activity android:name=".activitys.CutDownTvListActivity" />
     </application>
 
 </manifest>
