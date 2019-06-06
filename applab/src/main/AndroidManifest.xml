@@ -20,9 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.GlideActivity"/>
-        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.GlideActivity -->
-        <activity android:name=".activitys.EditextDialogCompatibleActivity">
+        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.DialogAndLifeCycleActivity -->
+        <activity android:name=".activitys.GlideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,6 +38,7 @@
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.CirCleActivity" />
         <activity android:name=".activitys.ConstraintActivity" />
+        <activity android:name=".activitys.EditextDialogCompatibleActivity" />
         <activity android:name=".leakcheck.LeakStartActivity" />
         <activity android:name=".leakcheck.LeakActivity" />
         <activity android:name=".fragmentcannotshowbug.BugMainActivity" />
