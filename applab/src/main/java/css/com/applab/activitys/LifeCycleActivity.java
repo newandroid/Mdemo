@@ -3,23 +3,39 @@ package css.com.applab.activitys;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import css.com.applab.R;
 import css.com.applab.fragments.LifeCycleFragment;
 
 public class LifeCycleActivity extends AppCompatActivity {
     private static final String TAG = "LifeCycleActivity";
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragmentcontainer,new LifeCycleFragment());
-        fragmentTransaction.commit();
+        button = findViewById(R.id.btn);
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.fragmentcontainer,new LifeCycleFragment());
+        LifeCycleFragment lifeCycleFragment = new LifeCycleFragment();
+        fragmentTransaction.add(R.id.fragmentcontainer, lifeCycleFragment, "flag");
+        fragmentTransaction.addToBackStack("hahah");
+        int commit = fragmentTransaction.commit();
+        button.setOnClickListener(v -> {
+//            supportFragmentManager.popBackStackImmediate("flag", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            supportFragmentManager.popBackStackImmediate("hahah", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//            fragmentTransaction.remove(lifeCycleFragment);
+//            supportFragmentManager.popBackStack("hahah",);
+
+        });
     }
 
     @Override

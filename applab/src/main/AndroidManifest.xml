@@ -20,8 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.DialogAndLifeCycleActivity -->
-        <activity android:name=".activitys.GlideActivity">
+        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.LifeCycleActivity -->
+        <activity android:name=".activitys.LifeCycleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
         <activity android:name=".activitys.RedGreenActivity" />
         <activity android:name=".activitys.GridViewPagerActivity" />
         <activity android:name=".activitys.HorizontalGridViewActivity" />
-        <activity android:name=".activitys.LifeCycleActivity" />
+        <activity android:name=".activitys.GlideActivity" />
         <activity android:name=".activitys.CirCleActivity" />
         <activity android:name=".activitys.ConstraintActivity" />
         <activity android:name=".activitys.EditextDialogCompatibleActivity" />

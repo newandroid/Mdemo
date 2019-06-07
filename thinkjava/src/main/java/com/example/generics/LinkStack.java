@@ -11,25 +11,28 @@ public class LinkStack<T> {
         U item;
         Node<U> next;
 
-        public Node(){
+        public Node() {
             item = null;
             next = null;
         }
 
-        public Node(U item,Node<U> next){
+        public Node(U item, Node<U> next) {
             this.item = item;
             this.next = next;
         }
+
         boolean end() {
             return item != null && next != null;
         }
     }
-    public void push(T item){
-        top = new Node<>(item,top);
+
+    public void push(T item) {
+        top = new Node<>(item, top);
     }
-    public T pop(){
+
+    public T pop() {
         T result = top.item;
-        if (top.end())top= top.next;
+        if (top.end()) top = top.next;
         return result;
     }
 
