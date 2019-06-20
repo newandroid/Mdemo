@@ -23,7 +23,7 @@
         <activity android:name=".activitys.LifeCycleActivity"></activity>
         <activity android:name=".activitys.InputFilterActivity" />
         <!-- .activitys.ChartViewActivity -->
-        <activity android:name=".activitys.ChartViewActivity">
+        <activity android:name=".activitys.ScrollAndConstraintLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,7 +60,7 @@
         <activity android:name=".activitys.CutDownTvActivity" />
         <activity android:name=".activitys.SeekBarActivity" />
         <activity android:name=".activitys.ContextMenuActivity" />
-        <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
+        <activity android:name=".activitys.ChartViewActivity" />
         <activity android:name=".activitys.ContryListActivity" />
         <activity android:name=".activitys.ImageTestActivity" />
         <activity android:name=".activitys.CustomDragGroupActivity" />
