@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import css.com.applab.R;
+import css.com.applab.utils.InputMethodUtils;
 
 /**
  * 想通了，不要用居中的那种属性，用对齐属性
@@ -28,11 +29,11 @@ public class ScrollAndConstraintLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_scroll_and_constraint_layout);
         setContentView(R.layout.activity_single_button);
-        btn = findViewById(R.id.btn);
-        root = findViewById(R.id.root);
-        btn.setOnClickListener(v -> {
-            showPP();
-        });
+//        btn = findViewById(R.id.btn);
+//        root = findViewById(R.id.root);
+//        btn.setOnClickListener(v -> {
+//            showPP();
+//        });
 
     }
 
@@ -70,5 +71,9 @@ public class ScrollAndConstraintLayoutActivity extends AppCompatActivity {
         scrollView.post(() -> {
             System.out.println("height:" + scrollView.getHeight());
         });
+    }
+
+    public void show(View view) {
+        InputMethodUtils.showOrHideInputMethod(this, view, true);
     }
 }
