@@ -6,6 +6,10 @@ import java.util.Random;
 
 public class MathApi {
     @Test
+    public void oho(){
+        System.out.println("branch test");
+    }
+    @Test
     public void roundTest() {
         int value = (int) Math.ceil(24 * 1.0 / 4);
         System.out.println(value);
