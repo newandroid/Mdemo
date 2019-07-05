@@ -7,4 +7,11 @@ public class TestGit {
     public void add() {
 
     }
+
+    public void more() {
+
+    }
+    public void moreTwo(){
+        
+    }
 }
