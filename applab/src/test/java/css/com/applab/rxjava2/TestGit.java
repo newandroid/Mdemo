@@ -5,4 +5,5 @@ package css.com.applab.rxjava2;
  */
 public class TestGit {
     public int content1;
+    public int content2;
 }
