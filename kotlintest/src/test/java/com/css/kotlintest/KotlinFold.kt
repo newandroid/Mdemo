@@ -32,4 +32,20 @@ class KotlinFold {
 
         println(5 shl 2)
     }
+    @Test
+    fun real(){
+        val items = listOf(1,2,3,4,5)
+        items.fold(0,{aac:Int,i:Int->
+            println("aac =$aac,i = $i")
+            val result = aac+i
+            println("result=$result")
+            result
+        })
+
+        val jointToString = items.fold("Elements:",{aac,i -> aac+" "+i})
+        println(jointToString)
+
+        val product = items.fold(1,Int::times)
+        println(product)
+    }
 }
