@@ -11,9 +11,15 @@ import org.junit.Test;
 
 public class GenericTypeTest {
     @Test
-    public void getMethod(){
+    public void getMethod() {
         GenericType<String> name = new GenericType<>();
         name.setData("xiaoming");
-        System.out.println("result:"+name.getData());
+        System.out.println("result:" + name.getData());
+        gTest(new String("ni hao"));
+    }
+
+    private <T> T gTest(T t) {
+        System.out.println(t.hashCode());
+        return t;
     }
 }
