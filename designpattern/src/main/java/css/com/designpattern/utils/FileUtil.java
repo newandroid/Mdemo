@@ -32,8 +32,7 @@ public class FileUtil {
 
     public static File createFileDir(String dirPath) {
         File file = null;
-        if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED)) {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             file = new File(Environment.getExternalStorageDirectory(), dirPath);
         } else {
             file = new File(ApplicationInit.getInstance().getApplicationContext().getFilesDir(), dirPath);
