@@ -48,4 +48,12 @@ class KotlinFold {
         val product = items.fold(1,Int::times)
         println(product)
     }
+    @Test
+    fun funtionPrograme(){
+//        listOf(1,2,3).forEach(mPrint)
+    }
+
+    fun mPrint(message: Any?){
+       println(message)
+    }
 }
