@@ -10,31 +10,12 @@ public class MyClass {
     static final String CONTENT = "content";
 
     public static void main(String[] args) {
-        //normal implement
-        String dataPull = getDataPull();
-        System.out.println(dataPull);
-
-        //push implement
-        IObservable<String> dataPush = getDataPush();
-        dataPush.subscribe(new IObserver<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-
-            @Override
-            public void onNext(String args) {
-                System.out.println(args);
-            }
-        });
+//        unkonwTest();
+//        testpullpush();
+        testAsync();
     }
 
-    private void unkonwTest() {
+    private static void unkonwTest() {
         IObservable iObservable = WatchableExtensions.create(new Func1<IDisposable, IObserver<String>>() {
             @Override
             public IDisposable call(IObserver<String> iObserver) {
@@ -72,6 +53,35 @@ public class MyClass {
 
     }
 
+    static void testpullpush() {
+        //normal implement
+        String dataPull = getDataPull();
+        System.out.println(dataPull);
+
+        //push implement
+        IObservable<String> dataPush = getDataPush();
+        dataPush.subscribe(new IObserver<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+
+            @Override
+            public void onNext(String args) {
+                System.out.println(args);
+            }
+        });
+    }
+
+    static void testAsync() {
+
+    }
+
     public static String getDataPull() {
         return CONTENT;
     }
@@ -85,4 +95,6 @@ public class MyClass {
             }
         });
     }
+
+
 }
