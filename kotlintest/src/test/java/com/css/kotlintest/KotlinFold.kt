@@ -32,28 +32,50 @@ class KotlinFold {
 
         println(5 shl 2)
     }
+
     @Test
-    fun real(){
-        val items = listOf(1,2,3,4,5)
-        items.fold(0,{aac:Int,i:Int->
+    fun real() {
+        val items = listOf(1, 2, 3, 4, 5)
+        val fold = items.fold(0, { aac: Int, i: Int ->
             println("aac =$aac,i = $i")
-            val result = aac+i
+            val result = aac + i
             println("result=$result")
             result
         })
+        println("fold=$fold")
 
-        val jointToString = items.fold("Elements:",{aac,i -> aac+" "+i})
+        val jointToString = items.fold("Elements:", { aac, i -> aac + " " + i })
         println(jointToString)
 
-        val product = items.fold(1,Int::times)
+        val product = items.fold(1, Int::times)
         println(product)
     }
+
     @Test
-    fun funtionPrograme(){
-//        listOf(1,2,3).forEach(mPrint)
+    fun funtionPrograme() {
+//        arrayOf(1, 2, 3).forEach(KotlinFold::mPrint)
+        val oho: () -> Unit = { println("null") }
+        funParent(oho)
+
     }
 
-    fun mPrint(message: Any?){
-       println(message)
+    @Test
+    fun instanceFun(){
+        val arrayOf = arrayOf(1, 2, 3)
+        val mPrint: (Int) -> Unit = { message -> println(message) }
+        arrayOf.forEach(mPrint)
+
+        arrayOf.forEach(this::fuck)
+//        arrayOf.forEach(KotlinFold::fuck)
     }
+    fun fuck(message:Int):Unit{
+        println(message)
+    }
+
+
+    fun funParent(empty: () -> Unit) {
+        println("funParent")
+        empty()
+    }
+
 }
