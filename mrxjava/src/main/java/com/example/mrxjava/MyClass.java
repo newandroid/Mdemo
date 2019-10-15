@@ -10,15 +10,17 @@ public class MyClass {
     static final String CONTENT = "content";
 
     public static void main(String[] args) {
-//        unkonwTest();
-//        testpullpush();
-        testAsync();
+        testpullpush();
+//        testEvent();
+//        testAsync();
     }
 
-    private static void unkonwTest() {
+    private static void testEvent() {
+
         IObservable iObservable = WatchableExtensions.create(new Func1<IDisposable, IObserver<String>>() {
             @Override
             public IDisposable call(IObserver<String> iObserver) {
+                //event 装载的地方
                 iObserver.onNext("hello world");
 //                iObserver.onError(new Exception());
                 try {
@@ -31,7 +33,7 @@ public class MyClass {
                 return null;
             }
         });
-        IDisposable onCompleted = iObservable.subscribe(new IObserver<String>() {
+        IObserver iObserver =  new IObserver<String>() {
             @Override
             public void onCompleted() {
                 System.out.println("onCompleted");
@@ -44,10 +46,13 @@ public class MyClass {
 
             @Override
             public void onNext(String args) {
+                //事件消费的地方
                 System.out.println(args);
             }
-        });
-        onCompleted.unsubscribe();//无效
+        };
+//        WatchableExtensions.empty().subscribe(iObserver);
+        IDisposable onCompleted = iObservable.subscribe(iObserver);//桥梁
+//        onCompleted.unsubscribe();//无效
 
 //        iObservable.subscribe(new String(""));
 
@@ -56,26 +61,16 @@ public class MyClass {
     static void testpullpush() {
         //normal implement
         String dataPull = getDataPull();
-        System.out.println(dataPull);
+        System.out.println(dataPull);//阻塞式的
 
         //push implement
         IObservable<String> dataPush = getDataPush();
-        dataPush.subscribe(new IObserver<String>() {
+        dataPush.subscribe(new MOnNextImplement<String>() {
             @Override
-            public void onCompleted() {
-
+            public void call(String s) {
+                System.out.println(s);
             }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-
-            @Override
-            public void onNext(String args) {
-                System.out.println(args);
-            }
-        });
+        });//为什么不行
     }
 
     static void testAsync() {
@@ -87,13 +82,33 @@ public class MyClass {
     }
 
     public static IObservable<String> getDataPush() {
-        return WatchableExtensions.create(new Func1<IDisposable, IObserver<String>>() {
-            @Override
-            public IDisposable call(IObserver<String> iObserver) {
-                iObserver.onNext(CONTENT);
-                return null;
-            }
-        });
+        return WatchableExtensions.create(func1);
+    }
+    static Func1 func1 = new Func1<IDisposable, IObserver<String>>() {
+        @Override
+        public IDisposable call(IObserver<String> iObserver) {
+            iObserver.onNext(CONTENT);
+            return null;
+        }
+    };
+
+    static abstract class MOnNextImplement<T> implements IObserver<T>{
+
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onError(Exception e) {
+
+        }
+
+        @Override
+        public void onNext(T args) {
+            call(args);
+        }
+        public abstract void call(T t);
     }
 
 
