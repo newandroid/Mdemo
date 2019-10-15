@@ -1,7 +1,9 @@
 package com.example.mrxjava;
 
 import com.example.mrxjava.functions.Func1;
+import com.example.mrxjava.operations.AtomicWatchableSubscription;
 import com.example.mrxjava.operations.WatchableExtensions;
+import com.example.mrxjava.reactive.AbstractIObservable;
 import com.example.mrxjava.reactive.IDisposable;
 import com.example.mrxjava.reactive.IObservable;
 import com.example.mrxjava.reactive.IObserver;
@@ -10,9 +12,64 @@ public class MyClass {
     static final String CONTENT = "content";
 
     public static void main(String[] args) {
-        testpullpush();
+        testRealBase();
+//        testpullpush();
+//        testEmpty();
 //        testEvent();
 //        testAsync();
+    }
+
+    private static void testRealBase() {
+        final IDisposable iDisposable = new IDisposable() {
+            @Override
+            public void unsubscribe() {
+
+            }
+        };
+        IObservable<String> iObservable = new AbstractIObservable<String>() {
+            @Override
+            public IDisposable subscribe(IObserver<String> observer) {
+                final AtomicWatchableSubscription subscription = new AtomicWatchableSubscription(WatchableExtensions.noOpSubscription());
+                final IObserver<T> ooobserver = new AtomicWatcher<T>(observer, iDisposable);
+                observer.onNext("hello");
+                return iDisposable;
+            }
+        };
+        iObservable.subscribe(new IObserver<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+
+            @Override
+            public void onNext(String args) {
+
+            }
+        });
+    }
+
+    private static void testEmpty() {
+        WatchableExtensions.empty().subscribe(new IObserver<Object>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("MyClass.onCompleted");
+            }
+
+            @Override
+            public void onError(Exception e) {
+                System.out.println("MyClass.onError");
+            }
+
+            @Override
+            public void onNext(Object args) {
+                System.out.println("MyClass.onNext");
+            }
+        });
     }
 
     private static void testEvent() {
@@ -33,7 +90,7 @@ public class MyClass {
                 return null;
             }
         });
-        IObserver iObserver =  new IObserver<String>() {
+        IObserver iObserver = new IObserver<String>() {
             @Override
             public void onCompleted() {
                 System.out.println("onCompleted");
@@ -70,7 +127,7 @@ public class MyClass {
             public void call(String s) {
                 System.out.println(s);
             }
-        });//为什么不行
+        });
     }
 
     static void testAsync() {
@@ -84,6 +141,7 @@ public class MyClass {
     public static IObservable<String> getDataPush() {
         return WatchableExtensions.create(func1);
     }
+
     static Func1 func1 = new Func1<IDisposable, IObserver<String>>() {
         @Override
         public IDisposable call(IObserver<String> iObserver) {
@@ -92,7 +150,7 @@ public class MyClass {
         }
     };
 
-    static abstract class MOnNextImplement<T> implements IObserver<T>{
+    static abstract class MOnNextImplement<T> implements IObserver<T> {
 
         @Override
         public void onCompleted() {
@@ -108,8 +166,10 @@ public class MyClass {
         public void onNext(T args) {
             call(args);
         }
+
         public abstract void call(T t);
     }
+
 
 
 }
