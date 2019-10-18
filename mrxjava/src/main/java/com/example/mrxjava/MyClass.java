@@ -1,7 +1,6 @@
 package com.example.mrxjava;
 
 import com.example.mrxjava.functions.Func1;
-import com.example.mrxjava.operations.AtomicWatchableSubscription;
 import com.example.mrxjava.operations.WatchableExtensions;
 import com.example.mrxjava.reactive.AbstractIObservable;
 import com.example.mrxjava.reactive.IDisposable;
@@ -20,19 +19,13 @@ public class MyClass {
     }
 
     private static void testRealBase() {
-        final IDisposable iDisposable = new IDisposable() {
-            @Override
-            public void unsubscribe() {
 
-            }
-        };
         IObservable<String> iObservable = new AbstractIObservable<String>() {
             @Override
             public IDisposable subscribe(IObserver<String> observer) {
-                final AtomicWatchableSubscription subscription = new AtomicWatchableSubscription(WatchableExtensions.noOpSubscription());
-                final IObserver<T> ooobserver = new AtomicWatcher<T>(observer, iDisposable);
+//                final IObserver<String> ooobserver = new AtomicWatcher<String>(observer, iDisposable);
                 observer.onNext("hello");
-                return iDisposable;
+                return null;
             }
         };
         iObservable.subscribe(new IObserver<String>() {
@@ -170,6 +163,36 @@ public class MyClass {
         public abstract void call(T t);
     }
 
+    static class BaseIDisposable implements IDisposable {
+        private boolean isDisposage = false;
+
+        @Override
+        public void unsubscribe() {
+            isDisposage = true;
+        }
+
+        public boolean isUnsubscribed() {
+            return isDisposage;
+        }
+    }
+
+    static class BaseWatch{
+        IObserver observer;
+    }
+    static class BaseWatchable<T> extends AbstractIObservable{
+        Iterable<T> content;
+
+        public BaseWatchable(Iterable<T> content) {
+            this.content = content;
+        }
+
+        @Override
+        public IDisposable subscribe(IObserver observer) {
+            BaseIDisposable baseIDisposable = new BaseIDisposable();
+            observer.onNext("121");
+            return null;
+        }
+    }
 
 
 }
