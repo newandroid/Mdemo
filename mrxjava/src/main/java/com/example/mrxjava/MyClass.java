@@ -7,6 +7,8 @@ import com.example.mrxjava.reactive.IDisposable;
 import com.example.mrxjava.reactive.IObservable;
 import com.example.mrxjava.reactive.IObserver;
 
+import java.util.Arrays;
+
 public class MyClass {
     static final String CONTENT = "content";
 
@@ -20,14 +22,7 @@ public class MyClass {
 
     private static void testRealBase() {
 
-        IObservable<String> iObservable = new AbstractIObservable<String>() {
-            @Override
-            public IDisposable subscribe(IObserver<String> observer) {
-//                final IObserver<String> ooobserver = new AtomicWatcher<String>(observer, iDisposable);
-                observer.onNext("hello");
-                return null;
-            }
-        };
+        IObservable<String> iObservable = new BaseWatchable<String>(Arrays.asList("1", "1", "1"));
         iObservable.subscribe(new IObserver<String>() {
             @Override
             public void onCompleted() {
@@ -41,7 +36,7 @@ public class MyClass {
 
             @Override
             public void onNext(String args) {
-
+                System.out.println(args);
             }
         });
     }
@@ -176,10 +171,66 @@ public class MyClass {
         }
     }
 
-    static class BaseWatch{
+    static class BaseWatch implements IObserver {
         IObserver observer;
+        BaseIDisposable iDisposable;
+        private volatile boolean finishRequested = false;
+        private volatile boolean finished = false;
+
+        public BaseWatch(IObserver observer, BaseIDisposable iDisposable) {
+            this.observer = observer;
+            this.iDisposable = iDisposable;
+        }
+
+        @Override
+        public void onCompleted() {
+            if (finished || iDisposable.isUnsubscribed()) {
+                // another thread has already finished us, so we won't proceed
+                return;
+            }
+            finishRequested = true;
+            synchronized (this) {
+                // check again since this could have changed while waiting
+                if (finished || iDisposable.isUnsubscribed()) {
+                    return;
+                }
+                observer.onCompleted();
+                finished = true;
+            }
+        }
+
+        @Override
+        public void onError(Exception e) {
+            if (finished || iDisposable.isUnsubscribed()) {
+                // another thread has already finished us, so we won't proceed
+                return;
+            }
+            finishRequested = true;
+            synchronized (this) {
+                // check again since this could have changed while waiting
+                if (finished || iDisposable.isUnsubscribed()) {
+                    return;
+                }
+                observer.onError(e);
+                finished = true;
+            }
+        }
+
+        @Override
+        public void onNext(Object args) {
+            if (finished || finishRequested || iDisposable.isUnsubscribed()) {
+                return;
+            }
+            synchronized (this) {
+                if (finished || finishRequested || iDisposable.isUnsubscribed()) {
+                    return;
+                }
+                observer.onNext(args);
+            }
+        }
     }
-    static class BaseWatchable<T> extends AbstractIObservable{
+
+    static class BaseWatchable<T> extends AbstractIObservable {
         Iterable<T> content;
 
         public BaseWatchable(Iterable<T> content) {
@@ -189,8 +240,12 @@ public class MyClass {
         @Override
         public IDisposable subscribe(IObserver observer) {
             BaseIDisposable baseIDisposable = new BaseIDisposable();
-            observer.onNext("121");
-            return null;
+            BaseWatch baseWatch = new BaseWatch(observer, baseIDisposable);
+            for (T t : content) {
+                baseWatch.onNext(t);
+            }
+            observer.onCompleted();
+            return baseIDisposable;
         }
     }
 
