@@ -9,7 +9,7 @@ import com.example.mrxjava.reactive.IObserver;
 
 import java.util.Arrays;
 
-public class MyClass {
+public class EventConcept {
     static final String CONTENT = "content";
 
     public static void main(String[] args) {
@@ -45,17 +45,17 @@ public class MyClass {
         WatchableExtensions.empty().subscribe(new IObserver<Object>() {
             @Override
             public void onCompleted() {
-                System.out.println("MyClass.onCompleted");
+                System.out.println("EventConcept.onCompleted");
             }
 
             @Override
             public void onError(Exception e) {
-                System.out.println("MyClass.onError");
+                System.out.println("EventConcept.onError");
             }
 
             @Override
             public void onNext(Object args) {
-                System.out.println("MyClass.onNext");
+                System.out.println("EventConcept.onNext");
             }
         });
     }

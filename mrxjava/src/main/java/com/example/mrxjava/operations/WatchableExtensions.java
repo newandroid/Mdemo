@@ -60,7 +60,6 @@ public class WatchableExtensions {
             return new NullWatchableSubscription();
         }
     }
-
     /**
      * A disposable object that does nothing when its unsubscribe method is called.
      */

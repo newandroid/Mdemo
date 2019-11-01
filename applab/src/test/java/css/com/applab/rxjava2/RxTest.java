@@ -18,6 +18,20 @@ import io.reactivex.subjects.PublishSubject;
 
 public class RxTest {
     @Test
+    public void baseAsyncTest(){
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                System.out.println(Thread.currentThread().toString());
+                e.onNext("hello world");
+            }
+        }).observeOn(Schedulers.io())
+                .subscribe(s -> {
+                    System.out.println(Thread.currentThread().toString());
+                    System.out.println(s);
+                });
+    }
+    @Test
     public void hhahha() {
         Observable.just("jjjj")
                 .map(s -> {
