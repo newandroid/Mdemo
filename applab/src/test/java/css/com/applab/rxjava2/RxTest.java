@@ -18,6 +18,10 @@ import io.reactivex.subjects.PublishSubject;
 
 public class RxTest {
     @Test
+    public void base(){
+//        ScheduledExecutorService scheduledExecutorService = SchedulerPoolFactory.create(threadFactory);
+    }
+    @Test
     public void baseAsyncTest(){
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
@@ -30,6 +34,11 @@ public class RxTest {
                     System.out.println(Thread.currentThread().toString());
                     System.out.println(s);
                 });
+        try {
+            Thread.sleep(3000*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     @Test
     public void hhahha() {
