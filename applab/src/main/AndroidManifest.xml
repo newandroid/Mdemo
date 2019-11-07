@@ -21,11 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.BitmapActivity"></activity>
+        <activity android:name=".activitys.ServerAndClientActivity"/>
+        <activity android:name=".activitys.BitmapActivity" />
         <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
         <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.ServerAndClientActivity -->
-        <activity android:name=".activitys.ServerAndClientActivity">
+        <activity android:name=".activitys.KastaChartViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
