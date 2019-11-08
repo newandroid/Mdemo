@@ -6,11 +6,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.css.learnrecyclerview.widget.GridLayoutManager;
-import com.css.learnrecyclerview.widget.RecyclerView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.css.learnrecyclerview.widget.GridLayoutManager;
+import com.css.learnrecyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private int random;
@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        normalSet();
-        gridSet();
+        normalSet();
+//        gridSet();
     }
 
     private void gridSet() {
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void normalSet() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3, GridLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 4, GridLayoutManager.HORIZONTAL, false));
 //        PagerGridSnapHelper pagerGridSnapHelper = new PagerGridSnapHelper();
 ////        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
 //        pagerGridSnapHelper.attachToRecyclerView(recyclerView);
