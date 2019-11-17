@@ -3,6 +3,11 @@ package css.com.applab.rxjava2;
 import org.junit.Test;
 import org.reactivestreams.Publisher;
 
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+
+import css.com.applab.SleepUtils;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -12,11 +17,47 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Cancellable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.internal.schedulers.SchedulerPoolFactory;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 
 
 public class RxTest {
+    @Test
+    public void base() {
+        ThreadFactory threadFactory = new ThreadFactory(){
+            @Override
+            public Thread newThread(Runnable r) {
+                System.out.println(r.getClass());
+                return new Thread(r);
+            }
+        };
+        ScheduledExecutorService scheduledExecutorService = SchedulerPoolFactory.create(threadFactory);
+        scheduledExecutorService.schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hello world");
+            }
+        },5, TimeUnit.SECONDS);
+        SleepUtils.sleep();
+    }
+
+    @Test
+    public void baseAsyncTest() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                System.out.println(Thread.currentThread().toString());
+                e.onNext("hello world");
+            }
+        }).observeOn(Schedulers.io())
+                .subscribe(s -> {
+                    System.out.println(Thread.currentThread().toString());
+                    System.out.println(s);
+                });
+        SleepUtils.sleep();
+    }
+
     @Test
     public void hhahha() {
         Observable.just("jjjj")
@@ -31,7 +72,8 @@ public class RxTest {
                 .subscribe();
     }
 
-    ObservableEmitter<String> gload=null;
+    ObservableEmitter<String> gload = null;
+
     @Test
     public void run() {
         ObservableOnSubscribe<String> observableOnSubscribe = new ObservableOnSubscribe<String>() {
@@ -120,7 +162,7 @@ public class RxTest {
     }
 
     @Test
-    public void just(){
+    public void just() {
         Consumer<String> onNextConsumer = new Consumer<String>() {
             @Override
             public void accept(String s) throws Exception {
@@ -147,11 +189,11 @@ public class RxTest {
     }
 
     @Test
-    public void add(){
+    public void add() {
 
     }
 
-    class MyObservable extends java.util.Observable{
+    class MyObservable extends java.util.Observable {
         @Override
         protected synchronized void setChanged() {
             super.setChanged();
@@ -159,11 +201,11 @@ public class RxTest {
     }
 
     @Test
-    public void create(){
+    public void create() {
     }
 
     @Test
-    public void map(){
+    public void map() {
         Flowable.just("jfjfj")
                 .map(new Function<String, Integer>() {
                     @Override
@@ -173,17 +215,19 @@ public class RxTest {
                 })
                 .subscribe();
     }
+
     @Test
-    public void flatmap(){
+    public void flatmap() {
         Flowable.just("sjkflajksf")
-               .flatMap(new Function<String, Publisher<Integer>>() {
-                   @Override
-                   public Publisher<Integer> apply(String s) throws Exception {
-                       return Flowable.just(22);
-                   }
-               })
+                .flatMap(new Function<String, Publisher<Integer>>() {
+                    @Override
+                    public Publisher<Integer> apply(String s) throws Exception {
+                        return Flowable.just(22);
+                    }
+                })
                 .subscribe();
     }
+
     @Test
     public void pushlishTest() {
         PublishSubject<String> delay = PublishSubject.create();

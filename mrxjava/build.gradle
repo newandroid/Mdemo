@@ -2,7 +2,8 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'org.slf4j:slf4j-api:1.7.28'
+    implementation 'org.slf4j:slf4j-api:1.7.29'
+    implementation 'org.slf4j:slf4j-android:1.7.29'
     implementation 'org.jruby:jruby:9.2.8.0'
     implementation 'org.codehaus.groovy:groovy:2.5.7'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
