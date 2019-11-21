@@ -108,12 +108,17 @@ public class KastaChartView extends View {
         canvas.drawLines(linePoint, pointLinePaint);
         for (int i = 0; i < points.size(); i++) {
             Point point = points.get(i);
-            canvas.drawCircle(point.x, point.y,dip2px(5),pointPaint);
-            pointDottedLinePath.moveTo(point.x,point.y);
-            pointDottedLinePath.lineTo(point.x,totalHeight);
+            canvas.drawCircle(point.x, point.y, dip2px(5), pointPaint);
+            pointDottedLinePath.moveTo(point.x, point.y);
+            pointDottedLinePath.lineTo(point.x, totalHeight);
 //            canvas.drawLine(point.x,point.y,point.x,totalHeight,pointDottedLinePaint);
         }
-        canvas.drawPath(pointDottedLinePath,pointDottedLinePaint);
+        canvas.drawPath(pointDottedLinePath, pointDottedLinePaint);
+
+        String tset = "jfjfjjf";
+        Paint paint = new Paint();
+        paint.setColor(Color.parseColor("#28292a"));
+        canvas.drawText(tset, 100, 200, paint);
     }
 
     private void init() {
@@ -134,7 +139,7 @@ public class KastaChartView extends View {
         pointDottedLinePaint.setStrokeWidth(dip2px(2));
         pointDottedLinePaint.setColor(Color.parseColor("#28292a"));
         //绘制长度为4的实线后再绘制长度为4的空白区域，0位间隔
-        pointDottedLinePaint.setPathEffect(new DashPathEffect(new float[]{dip2px(2.5f),dip2px(4)},0));
+        pointDottedLinePaint.setPathEffect(new DashPathEffect(new float[]{dip2px(2.5f), dip2px(4)}, 0));
     }
 
     private int dip2px(float dipValue) {

@@ -9,6 +9,10 @@ import java.io.UnsupportedEncodingException;
  */
 public class StringTest {
     @Test
+    public void value(){
+        System.out.println(3f);
+    }
+    @Test
     public void run(){
         String s = "jj";
         try {
