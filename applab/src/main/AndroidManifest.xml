@@ -21,12 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.ServerAndClientActivity"/>
+        <activity android:name=".activitys.KastaChartViewActivity"></activity>
+        <activity android:name=".activitys.ServerAndClientActivity" />
         <activity android:name=".activitys.BitmapActivity" />
         <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
         <activity android:name=".activitys.LifeCycleActivity" />
-        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.ServerAndClientActivity -->
-        <activity android:name=".activitys.KastaChartViewActivity">
+        <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.JsonTestActivity -->
+        <activity android:name=".activitys.JsonTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

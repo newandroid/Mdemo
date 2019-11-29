@@ -24,7 +24,7 @@ import io.reactivex.subjects.PublishSubject;
 
 public class RxTest {
     @Test
-    public void base() {
+    public void javaThreadTest() {
         ThreadFactory threadFactory = new ThreadFactory(){
             @Override
             public Thread newThread(Runnable r) {

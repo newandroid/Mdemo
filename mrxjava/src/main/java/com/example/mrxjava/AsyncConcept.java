@@ -10,9 +10,27 @@ public class AsyncConcept {
         WatchableExtensions.create(new Func1<IDisposable, IObserver<String>>() {
             @Override
             public IDisposable call(IObserver<String> iObserver) {
-                System.out.println(Thread.currentThread().toString());
-                iObserver.onNext("hello world");
-                return null;
+                final Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 75; i++) {
+                            iObserver.onNext("i" + i);
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        iObserver.onCompleted();
+                    }
+                });
+                thread.start();
+                return new IDisposable() {
+                    @Override
+                    public void unsubscribe() {
+                        thread.interrupt();
+                    }
+                };
             }
         }).subscribe(new IObserver<String>() {
             @Override
@@ -27,8 +45,7 @@ public class AsyncConcept {
 
             @Override
             public void onNext(String args) {
-                System.out.println(Thread.currentThread().toString());
-                System.out.println(args);
+                System.out.println(Thread.currentThread().toString()+" content:"+args);
             }
         });
     }
