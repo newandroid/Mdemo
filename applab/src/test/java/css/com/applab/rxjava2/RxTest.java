@@ -23,9 +23,66 @@ import io.reactivex.subjects.PublishSubject;
 
 
 public class RxTest {
+    Disposable subscribe;
+    boolean isDispose;
+    @Test
+    public void completeTest(){
+//        Thread thread = Thread.currentThread();
+//        String name = thread.getName();
+//        System.out.println(name);
+        Observable.empty().subscribeOn(Schedulers.io()).subscribe(s->{
+            Thread thread2 = Thread.currentThread();
+            String name2 = thread2.getName();
+            System.out.println(name2);
+        });
+        try {
+            Thread.sleep(5*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void hoho() {
+        Observable<Integer> objectObservable = Observable.create(e -> {
+            Disposable hoho = new Disposable() {
+                @Override
+                public void dispose() {
+                    isDispose = true;
+                }
+
+                @Override
+                public boolean isDisposed() {
+                    return isDispose;
+                }
+            };
+            e.setDisposable(hoho);
+            for (int i = 0; i < 10; i++) {
+                if (!isDispose){
+                    e.onNext(i);
+                }
+
+            }
+        });
+        subscribe = objectObservable.subscribe(s -> {
+            System.out.println(s);
+            if (s == 5) {
+                if (subscribe != null)
+                    subscribe.dispose();
+            }
+        });
+//        Observable<Integer> just = Observable.just(1, 2, 3, 4, 5, 6, 7);
+//        subscribe = just.subscribe(s -> {
+//            System.out.println(s);
+//            if (subscribe != null) {
+//                if (s == 5) subscribe.dispose();
+//            }
+//        });
+    }
+
     @Test
     public void javaThreadTest() {
-        ThreadFactory threadFactory = new ThreadFactory(){
+        ThreadFactory threadFactory = new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
                 System.out.println(r.getClass());
@@ -38,7 +95,7 @@ public class RxTest {
             public void run() {
                 System.out.println("hello world");
             }
-        },5, TimeUnit.SECONDS);
+        }, 5, TimeUnit.SECONDS);
         SleepUtils.sleep();
     }
 

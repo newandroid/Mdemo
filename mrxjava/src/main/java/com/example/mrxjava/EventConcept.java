@@ -242,10 +242,7 @@ public class EventConcept {
             BaseIDisposable baseIDisposable = new BaseIDisposable();
             BaseWatch baseWatch = new BaseWatch(observer, baseIDisposable);
             for (T t : content) {
-                if (!baseIDisposable.isUnsubscribed()){
-                    baseWatch.onNext(t);
-                }
-
+                baseWatch.onNext(t);
             }
             observer.onCompleted();
             return baseIDisposable;
