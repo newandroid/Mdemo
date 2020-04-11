@@ -16,6 +16,8 @@
  */
 #include <string.h>
 #include <jni.h>
+#include <omp.h>
+#include<android/log.h>
 
 /* This is a trivial JNI example where we use a native method
  * to return a new VM String. See the corresponding Java source
@@ -63,5 +65,25 @@ Java_com_example_hellojni_HelloJni_stringFromJNI(JNIEnv *env,
 
 JNIEXPORT jstring JNICALL
 Java_com_example_hellojni_HelloJni_unimplementedStringFromJNI(JNIEnv *env, jobject thiz) {
+    unsigned char a[] = {0x4d, 0x59, 0, 0, 0, 0};
+
+//    __android_log_print(ANDROID_LOG_DEBUG, "####", "%d",my_checksum(a, sizeof(a)));
     return (*env)->NewStringUTF(env, "this is my content: Hello world! boy");
+}
+
+unsigned short my_checksum(unsigned short *a, int len) {
+    unsigned int sum = 0;
+
+    while (len > 1) {
+        sum += *a++;
+        len -= sizeof(unsigned short);
+    }
+    if (len) {
+        sum += *(unsigned char *) a;
+    }
+    while (sum >> 16) {
+        sum = (sum >> 16) + (sum & 0xffff);
+    }
+
+    return (unsigned short) (~sum);
 }
