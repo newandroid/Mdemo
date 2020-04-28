@@ -8,6 +8,7 @@ public class JsonTset {
     @Test
     public void oho() {
         JSONObject jsonObject = new JSONObject();
+        System.out.println("git add something");
         try {
             jsonObject.put("fuck", new byte[]{1, 2, 3});
         } catch (JSONException e) {
