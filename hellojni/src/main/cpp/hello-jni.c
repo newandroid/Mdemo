@@ -63,27 +63,43 @@ Java_com_example_hellojni_HelloJni_stringFromJNI(JNIEnv *env,
     return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
 }
 
-JNIEXPORT jstring JNICALL
-Java_com_example_hellojni_HelloJni_unimplementedStringFromJNI(JNIEnv *env, jobject thiz) {
-    unsigned char a[] = {0x4d, 0x59, 0, 0, 0, 0};
-
-//    __android_log_print(ANDROID_LOG_DEBUG, "####", "%d",my_checksum(a, sizeof(a)));
-    return (*env)->NewStringUTF(env, "this is my content: Hello world! boy");
-}
-
 unsigned short my_checksum(unsigned short *a, int len) {
     unsigned int sum = 0;
 
     while (len > 1) {
-        sum += *a++;
-        len -= sizeof(unsigned short);
+        short one = *a++;
+        __android_log_print(ANDROID_LOG_DEBUG, "#### one:", "%x", one);
+        sum += one;
+        int size = sizeof(unsigned short);
+        __android_log_print(ANDROID_LOG_DEBUG, "#### size:", "%x", size);
+        len -= size;
     }
+    __android_log_print(ANDROID_LOG_DEBUG, "#### len:", "%x", len);
     if (len) {
-        sum += *(unsigned char *) a;
+        int single = *(unsigned char *) a;
+        __android_log_print(ANDROID_LOG_DEBUG, "#### single:", "%x", single);
+        sum += single;
     }
-    while (sum >> 16) {
+    __android_log_print(ANDROID_LOG_DEBUG, "#### start sum:", "%x", sum);
+    int initValue = sum >> 16;
+    __android_log_print(ANDROID_LOG_DEBUG, "#### initValue:", "%x", initValue);
+    while (initValue) {
+        __android_log_print(ANDROID_LOG_DEBUG, "#### initValue:", "%x", initValue);
         sum = (sum >> 16) + (sum & 0xffff);
+        initValue = sum >> 16;
     }
+    __android_log_print(ANDROID_LOG_DEBUG, "#### end sum:", "%x", sum);
+    int qufan = (~sum);
+    __android_log_print(ANDROID_LOG_DEBUG, "#### qufan:", "%x", qufan);
 
-    return (unsigned short) (~sum);
+    return (unsigned short )qufan ;
 }
+
+JNIEXPORT jstring JNICALL
+Java_com_example_hellojni_HelloJni_unimplementedStringFromJNI(JNIEnv *env, jobject thiz) {
+    unsigned char a[] = {0x4d, 0x59, 0, 0, 0, 0};
+    unsigned short b[] = {0x4d59, 0x2233, 0x1111, 0x5522, 0, 0, 0x10};
+    __android_log_print(ANDROID_LOG_DEBUG, "####", "%x", my_checksum(b, sizeof(b)));
+    return (*env)->NewStringUTF(env, "this is my content: Hello world! boy");
+}
+
