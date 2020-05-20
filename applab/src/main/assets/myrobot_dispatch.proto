@@ -1,0 +1,390 @@
+syntax = "proto3"; //此句指定了使用proto语法，它必须是文中非空非注释的第一行
+option java_package="com.muyuan.business.pto";
+option java_outer_classname = "RobotDispatch";
+package myrobot_dispatch;
+
+/*对于枚举类型，Protobuf有个约束，枚举的第一项对应值必须为0*/
+/*协议命令字*/
+enum EmCmdId{
+  CMD_NONE  = 0;
+
+  /*4位*/
+  /*第1位标识命令为服务端请求还是应答 1.请求，2.应答*/
+  /*第2位留空，最后一位开始两个一组，作为请求和响应的组合*/
+
+  // 模式切换
+  MODESWITCH_REQUEST    = 1001;
+  MODESWITCH_RESPONSE   = 1002;
+
+  // 导航到指定位置
+  ARRIVEPOSE_REQUEST    = 1003;
+  ARRIVEPOSE_RESPONSE   = 1004;
+
+  // 下发巡栏计划
+  INSPECTPLAN_REQUEST   = 1005;
+  INSPECTPLAN_RESPONSE  = 1006;
+
+  // 升级固件
+  UPDATEFIRM_REQUEST    = 1007;
+  UPDATEFIRM_RESPONSE   = 1008;
+
+  // 获取视频流
+  GETVIDEOURL_REQUEST     = 1009;
+  GETVIDEOURL_RESPONSE    = 1010;
+
+  // 站点信息下发到小车
+  STATIONSISSUE_REQUEST    = 1011;
+  STATIONSISSUE_RESPONSE   = 1012;
+
+  //请求控制车
+  REMOTE_CTRL_REQ_REQUEST  = 1013;
+  REMOTE_CTRL_REQ_RESPONSE    = 1014;
+
+  //双发都可以发送关闭消息
+  REMOTE_CTRL_CLOSE_REQUEST = 1015;
+  REMOTE_CTRL_CLOSE_RESPONSE  = 1016;
+
+  //发送远程控制的命令
+  REMOTE_CTRL_VEL_REQUEST = 1017;
+  REMOTE_CTRL_VEL_RESPONSE = 1018;
+
+  //设置车移动速度
+  SET_VEL_REQUEST    = 1019;
+  SET_VEL_RESPONSE    = 1020;
+
+  //获取机器人信息，包括速度等可变的信息
+  ROBOT_INFO_REQUEST     = 1021;
+  ROBOT_INFO_RESPONSE    = 1022;
+
+  // 设备注册
+  REGISTER_REQUEST        = 2001;
+  REGISTER_RESPONSE       = 2002;
+
+  // 设备心跳
+  HEARTBEAT_REQUEST       = 2003;
+  HEARTBEAT_RESPONSE      = 2004;
+
+  //上报硬件状态
+  HW_STATUS_REQUEST       = 2005;
+  HW_STATUS_RESPONSE      = 2006;
+
+  //上报任务状态
+  TASK_STATUS_REQUEST     = 2007;
+  TASK_STATUS_RESPONSE    = 2008;
+
+  //上报系统状态
+  SYS_STATUS_REQUEST      = 2009;
+  SYS_STATUS_RESPONSE      = 2010;
+  
+  //死猪捡出车专用
+  CHAIN_CTRL_REQUEST	= 2011;
+  BELL_CTRL_REQUEST     =2012;
+
+  //获取雷达数据
+  LIDAR_DATA_REQUEST = 2013;
+  LIDAR_DATA_RESPONSE = 2014;
+
+}
+
+/*错误类型码*/
+enum ErrorType {
+  ERROR_NONE            = 0; // 没有错误
+  ERROR_TRANSPORT       = 1; // 传输出错
+}
+
+/*任务操作类型*/
+enum OperationType {
+  OPERATION_NONE        = 0;
+  OPERATION_EXEC        = 1; // 执行任务
+  OPERATION_CANCEL      = 2; // 取消任务
+}
+
+/*命令执行结果*/
+enum CmdState{
+  CMD_STATE_SUCCESS       = 0;
+  CMD_STATE_FAIL          = 1;
+}
+
+/*任务执行状态*/
+enum TaskState {
+  STATUS_INIT           = 0; // 初始状态
+  STATUS_DOING          = 1; // 执行中
+  STATUS_COMPLETE       = 2; // 完成
+  STATUS_FAILED         = 3; // 失败
+  STATUS_PAUSE          = 4; // 暂停中
+}
+
+/*机器模式（自动或手动）*/
+enum CarMode{
+  CARMODE_NONE    = 0;
+  CARMODE_AUTO    = 1;
+  CARMODE_NONAUTO   = 2;
+}
+
+/*机器人状态*/
+enum RobotState{
+  STATUS_IDLE     = 0; // 闲置中
+  STATUS_CHARGING     = 1; // 充电中
+  STATUS_TASKING    = 2; // 任务中
+}
+/*****************************************************************************************/
+message Base {
+  string      cmdId       = 1; // message id
+  EmCmdId     cmdType     = 2; // message type
+  ErrorType   error       = 3; // error type
+  uint64      timeStamp   = 4; // 时间戳
+}
+
+/*巡检配置*/
+message InspectPlan{
+  string    time = 1; //巡检开始时间
+  uint32    light = 2; //是否开启补光灯
+  string      inspectId = 3;  // 计划id
+}
+
+/*视频流地址*/
+message VideoUrl{
+  string     type = 1;
+  string      url = 2;
+}
+
+/*协议数据包*/
+message CmdPackets {
+  Base              base        = 1; // base
+  ModeSwitchRequest modeSwitchRequest   = 2; //自动模式和手动模式切换
+  ModeSwitchResponse  modeSwitchResponse  = 3;
+
+  ArrivePoseRequest arrivePoseRequest = 4; //控制机器到达某个指定位置
+  ArrivePoseResponse  arrivePoseResponse  = 5;
+
+  InspectPlanRequest  inspectPlanRequest  = 6; //配置巡检计划
+  InspectPlanResponse inspectPlanResponse = 7;
+
+  UpdateFirmRequest updateFirmRequest = 8; //启动固件升级
+  UpdateFirmResponse  updateFirmResponse  = 9;
+
+  GetVideoUrlRequest  getVideoUrlRequest  = 10; //获取摄像机视频流地址
+  GetVideoUrlResponse getVideoUrlResponse = 11;
+
+  RegisterRequest     registerRequest     = 12; // 设备注册
+  RegisterResponse    registerResponse    = 13;
+
+  HeartBeatRequest    heartBeatRequest    = 14; // 设备心跳
+  HeartBeatResponse   heartBeatResponse   = 15;
+
+  HwStatusReq  hwStatusReq                = 16;   //上报硬件状态
+  HwStatusResp  hwStatusResp              = 17;
+
+  TaskStatusReq taskStatusReq             = 18;   //上报任务状态
+  TaskStatusResp taskStatusResp           = 19;
+
+  SystemStatusReq systemStatusReq         = 20;   //上报系统状态
+  SystemStatusResp systemStatusResp       = 21;
+
+  StationIssueRequest    stationIssueRequest    = 22; // 设备状态上报
+  StationIssueResponse   stationIssueResponse   = 23;
+
+  VelCmdReq velCmdRequest = 24;//发送控制速度指令
+
+  RemoteCtrlReq remoteCtrlRequest = 26; //发起远程控制
+  RemoteCtrlResp  remoteCtrlResponse = 27;
+
+  RemoteCtrlCloseReq remoteCtrlCloseRequest = 28; //关闭远程控制
+  RemoteCtrlCloseResp remoteCtrlCloseResponse = 29;
+
+  SetRobotVelRequest robotVelRequest = 30; //设置机器人速度
+  SetRobotVelResponse robotVelResponse = 31;
+
+  ChainCtrlRequest chainCtrlRequest = 32; //死猪检出车滚齿控制
+  BellCtrlRequest  bellCtrlRequest  = 33; //死猪检出车电铃控制
+
+  LidarDataRequest lidarDataRequest = 34;//雷达数据请求
+  LidarDataResponse lidarDataResponse = 35;//雷达数据请求
+}
+
+/*****************************************************************************************/
+/*模式切换，自动模式和手动模式切换*/
+message ModeSwitchRequest{
+  CarMode   mode    = 1; //0表示自动模式，1表示手动模式，默认为自动模式
+}
+
+message ModeSwitchResponse{
+  CmdState  state = 1;
+}
+
+/*控制机器人到达指定位置*/
+message ArrivePoseRequest{
+  OperationType operation = 1;
+  string      poseNo    = 2;
+}
+
+//发送速度控制指令,速度控制不用应答
+message VelCmdReq{
+  RobotVel vel = 1;
+}
+
+//请求控制指令
+message RemoteCtrlReq{
+  string ip = 1;
+  uint32  port = 2;
+}
+
+/*机器人速度, 值为 速度× 100*/
+message RobotVel{
+  sint32 linear = 1;
+  sint32 angular = 2;
+}
+
+/*设置机器人速度*/
+message SetRobotVelRequest{
+  RobotVel vel = 1;
+}
+
+message SetRobotVelResponse{
+  CmdState state = 1;
+}
+
+//请求控制应答指令
+message RemoteCtrlResp{
+  CmdState  state = 1;
+}
+
+//结束控制
+message RemoteCtrlCloseReq{
+
+}
+
+//结束控制应答
+message RemoteCtrlCloseResp{
+  CmdState  state = 1;
+}
+
+message ArrivePoseResponse{
+  CmdState  state = 1;
+}
+
+/*巡检计划*/
+message InspectPlanRequest{
+  repeated  InspectPlan   plans = 1;
+}
+
+message InspectPlanResponse{
+  CmdState  state = 1;
+  string      inspectId      = 2; //计划iD
+}
+
+/*启动固件升级*/
+message UpdateFirmRequest{
+  string    url = 1;
+  string    md5 = 2;
+}
+
+message UpdateFirmResponse{
+  CmdState  state = 1;
+}
+
+/*获取视频流地址*/
+message GetVideoUrlRequest{
+
+}
+
+message GetVideoUrlResponse{
+  repeated VideoUrl videoUrl = 1;
+}
+
+/*设备注册*/
+message RegisterRequest{
+  string    devNumber = 1;
+  uint32    devType   = 2;
+  string    firmVersion = 3;
+  string      cameraIdxCode = 4;
+}
+
+message RegisterResponse{
+  CmdState  state = 1;
+}
+
+/*设备心跳*/
+message HeartBeatRequest{
+}
+
+message HeartBeatResponse{
+  CmdState  state = 1;
+}
+
+/*车体硬件状态*/
+message HwStatusReq{
+  string      batteryLevel            = 1; //电池电量
+  string      batteryVoltage          = 2; //电池电压
+  uint32      camera                  = 3; //相机
+  uint32      dualLightCamera         = 4; //双光相机
+  uint32      imu                     = 5; //IMU
+  uint32      impactSensor            = 6; //碰撞传感器
+  repeated    uint32      infrared            = 7; //红外传感器组
+  repeated    uint32      electricMachinery   = 8; //电机
+}
+
+message HwStatusResp{
+  CmdState  state = 1;
+}
+
+/*车体任务状态*/
+message TaskStatusReq{
+  string    taskId      = 1; //任务Id
+  TaskState   TaskState   = 2; //机器人状态
+  string      currentPose = 3; //当前站点
+  string      targetPose  = 4; //目标站点
+  uint32      speed       = 5; //速度
+}
+
+message TaskStatusResp{
+  CmdState  state = 1;
+}
+
+/*车体系统状态*/
+message SystemStatusReq{
+  string    systemClock = 1; //系统时钟
+  RobotState  robotState  = 2; //机器人状态
+}
+
+message SystemStatusResp{
+  CmdState  state = 1;
+}
+
+/*站点信息*/
+message Station{
+  string    name = 1; //巡检开始时间
+  string    no  = 2; //是否开启补光灯
+  string      sty = 3;  // 计划id
+}
+/*站点下发*/
+message StationIssueRequest{
+  repeated  Station   stations = 1;
+}
+
+message StationIssueResponse{
+  CmdState  state = 1; //执行状态
+}
+
+message ChainCtrlRequest{
+  uint32 mode = 1;
+}
+message BellCtrlRequest{
+  uint32 mode = 1;
+}
+
+message LidarDataRequest {
+  uint32 mode = 1;//起 停 获取雷达激光数据
+}
+
+message LidarDataResponse {
+  float angle_min = 1;
+  float angle_max = 2;
+  float angle_increment = 3;
+  float time_increment = 4;
+  float scan_time = 5;
+  float range_min = 6;
+  float range_max = 7;  
+  repeated float ranges = 8;
+  repeated float intensities = 9;
+}

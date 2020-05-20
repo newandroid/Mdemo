@@ -4,6 +4,11 @@ import android.content.pm.PackageManager;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -11,11 +16,12 @@ import org.junit.Test;
  */
 public class ExampleUnitTest {
     PackageManager packageManager;
-
+InputStream inputStream;
     @Test
     public void addition_isCorrect() {
         System.out.println(input(0));
-
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        int c;
     }
 
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test_nav"
+    app:startDestination="@id/navigateActivity">
+
+    <fragment android:id="@+id/placeholder" >
+        <action
+            android:id="@+id/action_placeholder_to_placeholder2"
+            app:destination="@id/placeholder2" />
+
+    </fragment>
+    <activity
+        android:id="@+id/navigateActivity"
+        android:name="com.muyuan.jetpacktest.nav.NavigateActivity"
+        android:label="activity_navigate"
+        tools:layout="@layout/activity_navigate" />
+    <fragment android:id="@+id/placeholder2" />
+</navigation>

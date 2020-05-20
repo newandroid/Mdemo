@@ -56,26 +56,37 @@ class KotlinFold {
 //        arrayOf(1, 2, 3).forEach(KotlinFold::mPrint)
         val oho: () -> Unit = { println("null") }
         funParent(oho)
-
     }
 
     @Test
-    fun instanceFun(){
+    fun instanceFun() {
         val arrayOf = arrayOf(1, 2, 3)
         val mPrint: (Int) -> Unit = { message -> println(message) }
         arrayOf.forEach(mPrint)
 
         arrayOf.forEach(this::fuck)
 //        arrayOf.forEach(KotlinFold::fuck)
+        arrayOf.forEach {
+            println(it)
+        }
     }
-    fun fuck(message:Int):Unit{
+
+    fun fuck(message: Int): Unit {
         println(message)
     }
 
+
+    fun funInvoke() {
+    }
+
+    fun empty() {
+
+    }
 
     fun funParent(empty: () -> Unit) {
         println("funParent")
         empty()
     }
+
 
 }

@@ -21,21 +21,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.KastaChartViewActivity"></activity>
-        <activity android:name=".activitys.ServerAndClientActivity" />
-        <activity android:name=".activitys.BitmapActivity" />
-        <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
-        <activity android:name=".activitys.LifeCycleActivity" >
+        <activity android:name=".activitys.ConstraitLayoutActivity"></activity>
+        <activity
+            android:name=".activitys.DrawerLayoutActivity"
+            android:label="@string/title_activity_drawer_layout"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activitys.GuideActivity" />
+        <activity android:name=".activitys.KastaChartViewActivity" />
+        <activity android:name=".activitys.ServerAndClientActivity" />
+        <activity android:name=".activitys.BitmapActivity" />
+        <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
+        <activity android:name=".activitys.LifeCycleActivity"></activity>
         <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.JsonTestActivity -->
-        <activity android:name=".activitys.JsonTestActivity">
-
-        </activity>
+        <activity android:name=".activitys.JsonTestActivity" />
         <activity android:name=".activitys.DrawCircleLineActivity" />
         <activity android:name=".activitys.CustomLayoutActivity" />
         <activity android:name=".activitys.BezierCurveActivity" />

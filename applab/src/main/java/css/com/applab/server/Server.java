@@ -30,7 +30,6 @@ public class Server {
             DataInputStream in = new DataInputStream(s.getInputStream());
             byte[] bytes = new byte[1024];
             int length = in.read(bytes);
-
             try {
                 System.out.println("recv2:" + new String(bytes, 0, length));
             } catch (Exception e) {
