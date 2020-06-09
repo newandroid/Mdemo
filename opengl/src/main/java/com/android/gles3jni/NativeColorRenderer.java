@@ -7,7 +7,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 class NativeColorRenderer implements GLSurfaceView.Renderer {
     static {
-        System.loadLibrary("native-color");
+        System.loadLibrary("gles3jni");
     }
 
     public native void surfaceCreated(int color);
