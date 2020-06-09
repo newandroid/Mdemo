@@ -1,5 +1,7 @@
-apply plugin: 'java'
-
+//apply plugin: 'java'
+plugins {
+    id 'java'
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'

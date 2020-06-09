@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class ProguardTest
+-keep class css.com.applab.proguard.Proguard2{public static void show(css.com.applab.rxjava2.ComposeTest);}
