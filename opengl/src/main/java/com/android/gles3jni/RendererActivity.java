@@ -18,7 +18,8 @@ public class RendererActivity extends Activity {
         glSurfaceView = new GLSurfaceView(this);
         setContentView(glSurfaceView);
         glSurfaceView.setEGLContextClientVersion(3);
-        GLSurfaceView.Renderer renderer = new NativeColorRenderer(Color.BLUE);
+//        GLSurfaceView.Renderer renderer = new NativeColorRenderer(Color.BLUE);
+        GLSurfaceView.Renderer renderer = new PointLineTriangle();
         glSurfaceView.setRenderer(renderer);
     }
 }
