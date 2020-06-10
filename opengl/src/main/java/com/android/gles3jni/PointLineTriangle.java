@@ -84,7 +84,7 @@ public class PointLineTriangle implements GLSurfaceView.Renderer {
         GLES30.glEnableVertexAttribArray(0);
         GLES30.glEnableVertexAttribArray(1);
         GLES30.glVertexAttribPointer(1, 4, GLES30.GL_FLOAT, false, 0, colorBuffer);
-        
+
 //        GLES30.glDrawArrays(GLES30.GL_POINTS, 0, 3);
 
 //        GLES30.glDrawArrays(GLES30.GL_LINE_STRIP, 0, 2);
