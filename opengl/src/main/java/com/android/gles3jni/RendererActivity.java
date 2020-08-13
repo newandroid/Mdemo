@@ -1,8 +1,8 @@
 package com.android.gles3jni;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.os.Bundle;
 
 public class RendererActivity extends Activity {
@@ -19,7 +19,7 @@ public class RendererActivity extends Activity {
         setContentView(glSurfaceView);
         glSurfaceView.setEGLContextClientVersion(3);
 //        GLSurfaceView.Renderer renderer = new NativeColorRenderer(Color.BLUE);
-        GLSurfaceView.Renderer renderer = new PointLineTriangle();
+        GLSurfaceView.Renderer renderer = new RectangleRenderer();
         glSurfaceView.setRenderer(renderer);
     }
 }

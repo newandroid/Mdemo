@@ -76,12 +76,16 @@ class KotlinFold {
     }
 
 
+    @Test
     fun funInvoke() {
+        var kotlinFold= KotlinFold()
+        kotlinFold.funParent(this::empty222)
     }
 
-    fun empty() {
-
+    fun empty222() {
+        println("empty")
     }
+
 
     fun funParent(empty: () -> Unit) {
         println("funParent")

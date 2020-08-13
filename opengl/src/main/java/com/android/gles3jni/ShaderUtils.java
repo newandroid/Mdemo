@@ -3,6 +3,14 @@ package com.android.gles3jni;
 import android.opengl.GLES30;
 
 public class ShaderUtils {
+    public static int compileVertexShader(String shaderCode) {
+        return compileShader(GLES30.GL_VERTEX_SHADER, shaderCode);
+    }
+
+    public static int compileFragmentShader(String shaderCode) {
+        return compileShader(GLES30.GL_FRAGMENT_SHADER, shaderCode);
+    }
+
     /**
      * 链接小程序
      *
