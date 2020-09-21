@@ -22,7 +22,7 @@ public class EventConcept {
 
     private static void testRealBase() {
 
-        IObservable<String> iObservable = new BaseWatchable<String>(Arrays.asList("1", "1", "1"));
+        IObservable<String> iObservable = new BaseWatchable<String>(Arrays.asList("1", "2", "3"));
         iObservable.subscribe(new IObserver<String>() {
             @Override
             public void onCompleted() {

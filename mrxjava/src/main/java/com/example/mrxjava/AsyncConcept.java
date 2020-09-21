@@ -45,7 +45,7 @@ public class AsyncConcept {
 
             @Override
             public void onNext(String args) {
-                System.out.println(Thread.currentThread().toString()+" content:"+args);
+                System.out.println(Thread.currentThread().toString() + " content:" + args);
             }
         });
     }

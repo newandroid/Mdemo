@@ -25,18 +25,20 @@ import io.reactivex.subjects.PublishSubject;
 public class RxTest {
     Disposable subscribe;
     boolean isDispose;
+
     @Test
-    public void completeTest(){
+    public void completeTest() {
 //        Thread thread = Thread.currentThread();
 //        String name = thread.getName();
 //        System.out.println(name);
-        Observable.empty().subscribeOn(Schedulers.io()).subscribe(s->{
+        Observable.empty().subscribe(System.out::println);
+        Observable.empty().subscribeOn(Schedulers.io()).subscribe(s -> {
             Thread thread2 = Thread.currentThread();
             String name2 = thread2.getName();
             System.out.println(name2);
         });
         try {
-            Thread.sleep(5*1000);
+            Thread.sleep(5 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -58,7 +60,7 @@ public class RxTest {
             };
             e.setDisposable(hoho);
             for (int i = 0; i < 10; i++) {
-                if (!isDispose){
+                if (!isDispose) {
                     e.onNext(i);
                 }
 
@@ -101,13 +103,15 @@ public class RxTest {
 
     @Test
     public void baseAsyncTest() {
-        Observable.create(new ObservableOnSubscribe<String>() {
+        Observable<String> hello_world = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
                 System.out.println(Thread.currentThread().toString());
                 e.onNext("hello world");
             }
-        }).observeOn(Schedulers.io())
+        });
+        System.out.println("middle");
+        hello_world.observeOn(Schedulers.io())
                 .subscribe(s -> {
                     System.out.println(Thread.currentThread().toString());
                     System.out.println(s);
