@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="SimpleProgress">
+        <attr name="simpleString" format="string" />
+        <attr name="simpleDimension" format="dimension" />
+        <attr name="simpleColor" format="color" />
+        <attr name="simpleDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>
