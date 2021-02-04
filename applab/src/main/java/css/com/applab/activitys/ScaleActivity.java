@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ViewGroup;
@@ -32,12 +33,23 @@ public class ScaleActivity extends AppCompatActivity {
     private class MyButton extends AppCompatButton {
         Paint p = new Paint();
         private ScaleGestureDetector mScaleDetector;
+        GestureDetector g;
         private float mScaleFactor = 1.f;
 
         public MyButton(Context mContext) {
             super(mContext);
             // View code goes here
             mScaleDetector = new ScaleGestureDetector(mContext, new ScaleListener());
+            GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
+                public boolean onScroll(MotionEvent e1, MotionEvent e2,
+                                        float distanceX, float distanceY) {
+                    System.out.println(distanceX+" "+distanceY);
+                    scrollTo((int) distanceX, (int) distanceY);
+                    return true;
+                }
+            };
+            g = new GestureDetector(getContext(), simpleOnGestureListener);
+
             p.setColor(Color.BLACK);
         }
 
@@ -45,6 +57,7 @@ public class ScaleActivity extends AppCompatActivity {
         public boolean onTouchEvent(MotionEvent ev) {
             // Let the ScaleGestureDetector inspect all events.
             mScaleDetector.onTouchEvent(ev);
+            g.onTouchEvent(ev);
             return true;
         }
 
