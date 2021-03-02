@@ -1,0 +1,26 @@
+{
+  "sysDataType": 16,
+  "payload": {
+    "msgId": "1938",
+    "deviceId": "202102051500311792",
+    "timestamp": 1612702059613,
+    "devType": 2,
+    "data": {
+      "status": 0,
+      "path": 0,
+      "site": 2201,
+      "nextSite": 0,
+      "speed": 0,
+      "bt": 0,
+      "km": 0,
+      "rfid1": 160,
+      "rfid2": 0,
+      "bat": 85,
+      "lon": 0,
+      "lat": 0,
+      "errorCode": [],
+      "charge": 0
+    }
+  },
+  "token": "AA2102000092"
+}

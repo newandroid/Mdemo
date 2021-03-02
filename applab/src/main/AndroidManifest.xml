@@ -21,19 +21,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activitys.ConstraitLayoutActivity"/>
+        <activity android:name=".activitys.CoroutinesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activitys.TempActivity">
+
+        </activity>
+        <activity android:name=".activitys.ConstraitLayoutActivity" />
         <activity
             android:name=".activitys.DrawerLayoutActivity"
             android:label="@string/title_activity_drawer_layout"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activitys.GuideActivity" />
         <activity android:name=".activitys.KastaChartViewActivity" />
         <activity android:name=".activitys.ServerAndClientActivity" />
         <activity android:name=".activitys.BitmapActivity" />
         <activity android:name=".activitys.ScrollAndConstraintLayoutActivity" />
-        <activity android:name=".activitys.LifeCycleActivity"></activity>
+        <activity android:name=".activitys.LifeCycleActivity" />
         <activity android:name=".activitys.InputFilterActivity" /> <!-- .activitys.JsonTestActivity -->
         <activity android:name=".activitys.JsonTestActivity" />
         <activity android:name=".activitys.DrawCircleLineActivity" />
@@ -71,13 +79,7 @@
         <activity android:name=".activitys.ImageTestActivity" />
         <activity android:name=".activitys.CustomDragGroupActivity" />
         <activity android:name=".activitys.CutDownTvListActivity" />
-        <activity android:name=".activitys.ScaleActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activitys.ScaleActivity"></activity>
     </application>
 
 </manifest>

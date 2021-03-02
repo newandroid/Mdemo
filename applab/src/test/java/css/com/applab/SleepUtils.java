@@ -1,6 +1,8 @@
 package css.com.applab;
 
-public class SleepUtils {
+import java.io.Serializable;
+
+public class SleepUtils implements Serializable {
     public static void sleep(){
         try {
             Thread.sleep(3000*1000);
