@@ -9,15 +9,22 @@ import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.*
 
 class CoroutinesActivity : AppCompatActivity() {
+    var l: Job? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
         btn.setOnClickListener {
             progressBar.visibility = View.VISIBLE
-            GlobalScope.launch(Dispatchers.Main) {
+            l = GlobalScope.launch(Dispatchers.Main) {
                 async(Dispatchers.IO) { delay(5000) }.await()
                 Toast.makeText(this@CoroutinesActivity, "finish async job but not block main thread", Toast.LENGTH_LONG).show()
                 progressBar.visibility = View.GONE
+            }
+
+        }
+        cancel.setOnClickListener {
+            l?.let {
+                it.cancel()
             }
         }
 
